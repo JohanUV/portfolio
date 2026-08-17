@@ -17,22 +17,59 @@ const techline = t('hero.techline').split(' · ');
   <div class="grid-lines absolute inset-0 -z-10 opacity-45" aria-hidden="true"></div>
 
   <div class="shell pt-14 pb-20 md:pt-20 md:pb-28">
-    <!-- Nombre + foto lado a lado en el hero; en móvil la foto va primero. -->
-    <div class="flex flex-col gap-10 sm:flex-row sm:items-center sm:gap-10 md:gap-14">
-      <div class="min-w-0 flex-1 order-2 sm:order-1">
+    <!--
+      Hero de dos bloques que sí cuadran: todo el texto a la izquierda, la foto
+      centrada verticalmente a la derecha para que llene el alto en vez de flotar
+      arriba dejando un vacío. En móvil se apila (foto primero).
+    -->
+    <div class="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
+      <div class="min-w-0 flex-1 order-2 lg:order-1">
         <p class="eyebrow">{t('hero.role')}</p>
 
         <h1 class="display mt-6 text-[length:var(--text-display)]">
           <span class="block text-ink-muted">{firstName}</span>
           <span class="block text-ink">{lastName}</span>
         </h1>
+
+        <p class="mt-8 max-w-2xl text-[length:var(--text-lead)] leading-snug text-ink">
+          {t('hero.tagline')}
+        </p>
+
+        <p class="mt-5 max-w-xl leading-relaxed text-ink-muted">
+          {t('hero.body')}
+        </p>
+
+        <ul class="mt-8 flex flex-wrap gap-2">
+          {techline.map((tech) => <li class="tag">{tech}</li>)}
+        </ul>
+
+        <div class="mt-9 flex flex-wrap items-center gap-3">
+          <a
+            href={`${home}#work`}
+            class="rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-surface transition-colors hover:bg-accent-deep"
+          >
+            {t('hero.cta.work')}
+          </a>
+          <a
+            href={site.resume[lang]}
+            class="rounded-lg border border-line-strong px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:border-accent/50 hover:text-accent"
+          >
+            {t('nav.resume')} ↓
+          </a>
+          <a
+            href={`${home}#contact`}
+            class="rounded-lg border border-line px-5 py-2.5 text-sm font-medium text-ink-muted transition-colors hover:border-line-strong hover:text-ink"
+          >
+            {t('hero.cta.contact')}
+          </a>
+        </div>
       </div>
 
       {
         site.portrait && (
-          <div class="group relative order-1 w-44 shrink-0 sm:order-2 sm:w-48 md:w-56">
+          <div class="group relative order-1 mx-auto w-52 shrink-0 sm:w-64 lg:order-2 lg:mx-0">
             <div
-              class="absolute -inset-2 -z-10 rounded-xl border border-line transition-colors duration-500 group-hover:border-accent/30"
+              class="absolute -inset-2.5 -z-10 rounded-2xl border border-line transition-colors duration-500 group-hover:border-accent/30"
               aria-hidden="true"
             />
             <img
@@ -42,50 +79,15 @@ const techline = t('hero.techline').split(' · ');
               height="900"
               fetchpriority="high"
               decoding="async"
-              class="aspect-[4/5] w-full rounded-lg border border-line-strong object-cover grayscale contrast-105 transition-all duration-500 group-hover:grayscale-0 group-hover:contrast-100"
+              class="aspect-[4/5] w-full rounded-xl border border-line-strong object-cover grayscale contrast-105 transition-all duration-500 group-hover:grayscale-0 group-hover:contrast-100"
             />
           </div>
         )
       }
     </div>
 
-    <p class="mt-10 max-w-3xl text-[length:var(--text-lead)] leading-snug text-ink">
-      {t('hero.tagline')}
-    </p>
-
-    <p class="mt-5 max-w-2xl leading-relaxed text-ink-muted">
-      {t('hero.body')}
-    </p>
-
-    <ul class="mt-8 flex flex-wrap gap-2">
-      {techline.map((tech) => <li class="tag">{tech}</li>)}
-    </ul>
-
-    <div class="mt-10 flex flex-wrap items-center gap-3">
-      <a
-        href={`${home}#work`}
-        class="rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-surface transition-colors hover:bg-accent-deep"
-      >
-        {t('hero.cta.work')}
-      </a>
-      <a
-        href={site.resume[lang]}
-        class="rounded-lg border border-line-strong px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:border-accent/50 hover:text-accent"
-      >
-        {t('nav.resume')} ↓
-      </a>
-      <a
-        href={`${home}#contact`}
-        class="rounded-lg border border-line px-5 py-2.5 text-sm font-medium text-ink-muted transition-colors hover:border-line-strong hover:text-ink"
-      >
-        {t('hero.cta.contact')}
-      </a>
-    </div>
-
-    <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
-      <p
-        class="flex items-center gap-2.5 font-mono text-[0.7rem] tracking-wide text-ink-muted"
-      >
+    <div class="mt-12 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-line pt-8">
+      <p class="flex items-center gap-2.5 font-mono text-[0.7rem] tracking-wide text-ink-muted">
         <span class="relative flex size-1.5">
           <span
             class="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-70"
