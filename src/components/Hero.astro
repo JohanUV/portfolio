@@ -48,16 +48,31 @@ const techline = t('hero.techline').split(' · ');
             {t('hero.cta.work')}
           </a>
           <a
-            href={site.resume[lang]}
+            href={`${home}#contact`}
             class="rounded-lg border border-line-strong px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:border-accent/50 hover:text-accent"
           >
-            {t('nav.resume')} ↓
+            {t('hero.cta.contact')}
+          </a>
+        </div>
+
+        <!-- Descarga del CV, con los dos idiomas explícitos. -->
+        <div class="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2">
+          <span class="font-mono text-[0.7rem] tracking-widest text-ink-dim uppercase">
+            {t('hero.cv')}
+          </span>
+          <a
+            href={site.resume.en}
+            download
+            class="rounded-md border border-line px-3.5 py-1.5 text-sm font-medium text-ink-muted transition-colors hover:border-accent/50 hover:text-accent"
+          >
+            English ↓
           </a>
           <a
-            href={`${home}#contact`}
-            class="rounded-lg border border-line px-5 py-2.5 text-sm font-medium text-ink-muted transition-colors hover:border-line-strong hover:text-ink"
+            href={site.resume.es}
+            download
+            class="rounded-md border border-line px-3.5 py-1.5 text-sm font-medium text-ink-muted transition-colors hover:border-accent/50 hover:text-accent"
           >
-            {t('hero.cta.contact')}
+            Español ↓
           </a>
         </div>
 

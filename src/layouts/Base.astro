@@ -97,6 +97,42 @@ const jsonLd = {
     {!bare && <Footer />}
 
     <script>
+      // Scroll suave con inercia (Lenis). Es la única "librería de calidad" que
+      // aporta sensación premium; respeta prefers-reduced-motion y no rompe los
+      // anclas #seccion del header.
+      import Lenis from 'lenis';
+
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const lenis = new Lenis({
+          duration: 1.1,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smoothWheel: true,
+        });
+
+        const raf = (time: number) => {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        };
+        requestAnimationFrame(raf);
+
+        // Los enlaces internos (#work, #about…) se desplazan con la misma inercia.
+        document.querySelectorAll<HTMLAnchorElement>('a[href*="#"]').forEach((a) => {
+          const url = new URL(a.href, location.href);
+          if (url.pathname === location.pathname && url.hash) {
+            a.addEventListener('click', (e) => {
+              const target = document.querySelector(url.hash);
+              if (target) {
+                e.preventDefault();
+                lenis.scrollTo(target as HTMLElement, { offset: -80 });
+                history.pushState(null, '', url.hash);
+              }
+            });
+          }
+        });
+      }
+    </script>
+
+    <script>
       // Animación de entrada al scroll, sin librerías. Marca los objetivos,
       // escalona las tarjetas dentro de una misma rejilla y se desconecta
       // de cada elemento una vez revelado.

@@ -17,6 +17,7 @@ export const ui = {
     'hero.body':
       'I work across the full stack, from the data pipeline to the interface, and I integrate the sources most teams write off as too messy to touch. Security is part of the design from the first line, not a patch after launch.',
     'hero.techline': 'Python · Django · React · PostgreSQL · n8n · Docker',
+    'hero.cv': 'Download CV',
     'hero.cta.work': 'See the work',
     'hero.cta.contact': 'Get in touch',
     'hero.available': 'Available for engineering roles and freelance work · remote or Ecuador',
@@ -116,6 +117,7 @@ export const ui = {
     'hero.body':
       'Trabajo en todo el stack, del pipeline de datos hasta la interfaz, e integro las fuentes que la mayoría descarta por difíciles. La seguridad es parte del diseño desde la primera línea, no un parche después del lanzamiento.',
     'hero.techline': 'Python · Django · React · PostgreSQL · n8n · Docker',
+    'hero.cv': 'Descargar CV',
     'hero.cta.work': 'Ver proyectos',
     'hero.cta.contact': 'Contactar',
     'hero.available': 'Disponible para roles de ingeniería y trabajo freelance · remoto o Ecuador',
