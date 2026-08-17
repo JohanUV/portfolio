@@ -1,0 +1,37 @@
+---
+import SideRail from './SideRail.astro';
+import Stats from './Stats.astro';
+import Projects from './Projects.astro';
+import Stack from './Stack.astro';
+import SecurityTrack from './SecurityTrack.astro';
+import About from './About.astro';
+import Contact from './Contact.astro';
+---
+
+<div class="relative">
+  <div class="hero-wash pointer-events-none absolute inset-x-0 top-0 -z-20 h-[70vh]" aria-hidden="true"></div>
+  <div
+    class="grid-lines pointer-events-none absolute inset-x-0 top-0 -z-10 h-[70vh] opacity-50"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="mx-auto max-w-[88rem] px-6 md:px-10 lg:flex lg:gap-14 xl:gap-20">
+    <!-- Rail: fijo en escritorio, cabecera normal en móvil -->
+    <div class="pt-14 pb-4 lg:w-[42%] lg:shrink-0 lg:pt-0 lg:pb-0">
+      <SideRail />
+    </div>
+
+    <!-- Contenido -->
+    <div class="lg:min-w-0 lg:flex-1 lg:py-16">
+      <div class="pt-8 lg:pt-0">
+        <Stats />
+      </div>
+      <Projects />
+      <Stack />
+      <SecurityTrack />
+      <About />
+      <Contact />
+    </div>
+  </div>
+</div>

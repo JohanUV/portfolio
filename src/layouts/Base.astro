@@ -1,0 +1,135 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource-variable/jetbrains-mono';
+// Eje de anchura incluido: permite la display condensada (wdth 80).
+import '@fontsource-variable/archivo/wdth.css';
+import '../styles/global.css';
+
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
+import { getLangFromUrl, alternatePath } from '../i18n/utils';
+
+interface Props {
+  title: string;
+  description: string;
+  /** La home usa el rail lateral y trae su propia navegación, sin header superior. */
+  bare?: boolean;
+}
+
+const { title, description, bare = false } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const enHref = new URL(alternatePath(Astro.url, 'en'), Astro.site);
+const esHref = new URL(alternatePath(Astro.url, 'es'), Astro.site);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  url: Astro.site?.toString(),
+  email: `mailto:${site.email}`,
+  jobTitle: 'Software Engineer',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Latacunga',
+    addressCountry: 'EC',
+  },
+  alumniOf: {
+    '@type': 'CollegeOrUniversity',
+    name: 'Universidad de las Fuerzas Armadas ESPE',
+  },
+  sameAs: [site.github, site.linkedin].filter(Boolean),
+  knowsAbout: [
+    'Python',
+    'Django',
+    'React',
+    'PostgreSQL',
+    'Data pipelines',
+    'API integration',
+    'Applied AI',
+    'OSINT',
+  ],
+};
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={enHref} />
+    <link rel="alternate" hreflang="es" href={esHref} />
+    <link rel="alternate" hreflang="x-default" href={enHref} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#08090b" />
+    <meta name="color-scheme" content="dark" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={lang === 'es' ? 'es_EC' : 'en_US'} />
+    <meta property="og:image" content={new URL('/og.png', Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="generator" content={Astro.generator} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+  </head>
+
+  <body class="min-h-screen antialiased">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:font-medium focus:text-surface"
+    >
+      {lang === 'es' ? 'Saltar al contenido' : 'Skip to content'}
+    </a>
+
+    {!bare && <Header />}
+    <main id="main">
+      <slot />
+    </main>
+    {!bare && <Footer />}
+
+    <script>
+      // Animación de entrada al scroll, sin librerías. Marca los objetivos,
+      // escalona las tarjetas dentro de una misma rejilla y se desconecta
+      // de cada elemento una vez revelado.
+      const targets = document.querySelectorAll<HTMLElement>(
+        'main section, main .card, main dl > div',
+      );
+
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && targets.length) {
+        const groups = new Map<HTMLElement, number>();
+        targets.forEach((el) => {
+          const parent = el.parentElement as HTMLElement;
+          const idx = groups.get(parent) ?? 0;
+          groups.set(parent, idx + 1);
+          if (el.tagName !== 'SECTION') {
+            el.style.setProperty('--reveal-delay', `${Math.min(idx, 5) * 70}ms`);
+          }
+          el.classList.add('reveal');
+        });
+
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('reveal-in');
+                io.unobserve(entry.target);
+              }
+            }
+          },
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.05 },
+        );
+
+        targets.forEach((el) => io.observe(el));
+      }
+    </script>
+  </body>
+</html>

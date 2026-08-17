@@ -1,0 +1,20 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../../layouts/Base.astro';
+import CaseStudy from '../../../components/CaseStudy.astro';
+import { projects } from '../../../data/projects';
+import { site } from '../../../data/site';
+
+export const getStaticPaths = (() =>
+  projects.map((project, i) => ({
+    params: { slug: project.slug },
+    props: { project, next: projects[(i + 1) % projects.length] },
+  }))) satisfies GetStaticPaths;
+
+const { project, next } = Astro.props;
+const c = project.es;
+---
+
+<Base title={`${c.title} — ${site.name}`} description={c.summary}>
+  <CaseStudy project={project} next={next} lang="es" />
+</Base>

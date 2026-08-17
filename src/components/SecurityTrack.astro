@@ -1,0 +1,73 @@
+---
+import { site } from '../data/site';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import Section from './Section.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const bridges = [
+  { title: t('security.bridge.1.t'), body: t('security.bridge.1.b') },
+  { title: t('security.bridge.2.t'), body: t('security.bridge.2.b') },
+  { title: t('security.bridge.3.t'), body: t('security.bridge.3.b') },
+  { title: t('security.bridge.4.t'), body: t('security.bridge.4.b') },
+];
+
+const profiles = [
+  { label: 'TryHackMe', href: site.tryhackme },
+  { label: 'Hack The Box', href: site.hackthebox },
+].filter((p) => p.href);
+---
+
+<Section
+  id="security"
+  num="03"
+  eyebrow={t('security.eyebrow')}
+  title={t('security.title')}
+  body={t('security.body')}
+>
+  <h3 class="font-mono text-[0.7rem] tracking-[0.18em] text-ink-dim uppercase">
+    {t('security.bridge.title')}
+  </h3>
+
+  <div class="mt-6 grid gap-4 md:grid-cols-2">
+    {
+      bridges.map((b, i) => (
+        <div class="card p-6">
+          <span class="font-mono text-xs text-accent">{String(i + 1).padStart(2, '0')}</span>
+          <h4 class="mt-3 font-semibold tracking-tight">{b.title}</h4>
+          <p class="mt-2.5 text-sm leading-relaxed text-ink-muted">{b.body}</p>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="mt-6 rounded-xl border border-line bg-surface-raised px-6 py-7">
+    <h4 class="font-mono text-[0.7rem] tracking-[0.18em] text-accent uppercase">
+      {t('security.progress.title')}
+    </h4>
+    <p class="mt-4 max-w-2xl text-sm leading-relaxed text-ink-muted">
+      {t('security.progress.body')}
+    </p>
+
+    {
+      profiles.length > 0 && (
+        <div class="mt-5 flex flex-wrap gap-3">
+          {profiles.map((p) => (
+            <a
+              href={p.href!}
+              rel="noopener"
+              class="rounded-md border border-line px-3.5 py-1.5 text-sm text-ink-muted transition-colors hover:border-accent/50 hover:text-accent"
+            >
+              {p.label}
+            </a>
+          ))}
+        </div>
+      )
+    }
+
+    <p class="mt-6 border-t border-line pt-5 font-mono text-xs leading-relaxed text-ink-dim">
+      {t('security.honest')}
+    </p>
+  </div>
+</Section>

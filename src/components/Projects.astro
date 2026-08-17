@@ -1,0 +1,43 @@
+---
+import { featuredProjects, clientProjects, otherProjects } from '../data/projects';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import Section from './Section.astro';
+import ProjectCard from './ProjectCard.astro';
+import ProjectCardCompact from './ProjectCardCompact.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Section
+  id="work"
+  num="01"
+  eyebrow={t('work.eyebrow')}
+  title={t('work.title')}
+  body={t('work.body')}
+>
+  <div class="flex flex-col gap-5">
+    {
+      featuredProjects.map((project, i) => (
+        <ProjectCard project={project} lang={lang} index={i} />
+      ))
+    }
+  </div>
+
+  <div class="mt-20 border-t border-line pt-12">
+    <h3 class="display-sm text-2xl text-ink">{t('work.client')}</h3>
+    <p class="mt-3 max-w-xl text-sm leading-relaxed text-ink-muted">{t('work.clientBody')}</p>
+
+    <div class="mt-7 grid gap-4 sm:grid-cols-2">
+      {clientProjects.map((project) => <ProjectCardCompact project={project} lang={lang} />)}
+    </div>
+  </div>
+
+  <h3 class="mt-16 font-mono text-[0.7rem] tracking-[0.18em] text-ink-dim uppercase">
+    {t('work.more')}
+  </h3>
+
+  <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {otherProjects.map((project) => <ProjectCardCompact project={project} lang={lang} />)}
+  </div>
+</Section>

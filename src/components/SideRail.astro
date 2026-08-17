@@ -1,0 +1,173 @@
+---
+import { site } from '../data/site';
+import { getLangFromUrl, useTranslations, alternatePath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const [firstName, ...rest] = site.name.split(' ');
+const lastName = rest.join(' ');
+
+const nav = [
+  { id: 'work', num: '01', label: t('nav.work') },
+  { id: 'stack', num: '02', label: t('nav.stack') },
+  { id: 'security', num: '03', label: t('nav.security') },
+  { id: 'about', num: '04', label: t('nav.about') },
+  { id: 'contact', num: '05', label: t('nav.contact') },
+];
+
+const socials = [
+  { label: 'GitHub', href: site.github },
+  { label: 'LinkedIn', href: site.linkedin },
+  { label: 'WhatsApp', href: `https://wa.me/${site.whatsapp}` },
+  { label: 'Email', href: `mailto:${site.email}` },
+];
+
+const other = lang === 'en' ? 'es' : 'en';
+const otherHref = alternatePath(Astro.url, other);
+---
+
+<header
+  class="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:flex-col lg:justify-between lg:py-16"
+>
+  <div>
+    <div class="flex items-start justify-between gap-4">
+      <p class="eyebrow">{t('hero.role')}</p>
+
+      <a
+        href={otherHref}
+        hreflang={other}
+        class="shrink-0 rounded-md border border-line px-2.5 py-1 font-mono text-[0.7rem] tracking-widest text-ink-muted transition-colors hover:border-accent/50 hover:text-accent"
+        aria-label={other === 'es' ? 'Ver en español' : 'View in English'}
+      >
+        {other.toUpperCase()}
+      </a>
+    </div>
+
+    <h1 class="display mt-6 text-[length:var(--text-display)]">
+      <span class="block text-ink-muted">{firstName}</span>
+      <span class="block text-ink">{lastName}</span>
+    </h1>
+
+    <p class="mt-7 max-w-md text-[length:var(--text-lead)] leading-snug text-ink">
+      {t('hero.tagline')}
+    </p>
+
+    <p class="mt-5 max-w-md text-sm leading-relaxed text-ink-muted">
+      {t('hero.body')}
+    </p>
+
+    <!-- Navegación con indicador activo. Oculta en móvil: ahí basta con scrollear. -->
+    <nav class="mt-12 hidden lg:block" aria-label="Section">
+      <ul class="flex flex-col gap-3.5">
+        {
+          nav.map((item) => (
+            <li>
+              <a
+                href={`#${item.id}`}
+                data-nav={item.id}
+                class="group flex items-center gap-4 font-mono text-[0.7rem] tracking-[0.16em] text-ink-dim uppercase transition-colors hover:text-ink"
+              >
+                <span class="h-px w-8 bg-line-strong transition-all duration-300 group-hover:w-14 group-hover:bg-ink-muted" />
+                <span>{item.num} · {item.label}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+
+  <div class="mt-12 lg:mt-0">
+    <div class="flex items-end gap-5">
+      {
+        site.portrait && (
+          <div class="group relative shrink-0">
+            <img
+              src={site.portrait}
+              alt={site.name}
+              width="760"
+              height="1013"
+              fetchpriority="high"
+              decoding="async"
+              class="aspect-[3/4] w-28 rounded-lg border border-line-strong object-cover grayscale contrast-110 transition-all duration-500 group-hover:grayscale-0 group-hover:contrast-100"
+            />
+          </div>
+        )
+      }
+
+      <div class="min-w-0">
+        <p class="flex items-start gap-2.5 font-mono text-[0.7rem] leading-relaxed text-ink-muted">
+          <span class="relative mt-1.5 flex size-1.5 shrink-0">
+            <span
+              class="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-70"
+            ></span>
+            <span class="relative inline-flex size-1.5 rounded-full bg-accent"></span>
+          </span>
+          <span>{t('hero.available')}</span>
+        </p>
+        <p class="mt-2 font-mono text-[0.7rem] text-ink-dim">
+          {site.location[lang]} · {site.timezone}
+        </p>
+      </div>
+    </div>
+
+    <ul class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[0.7rem] tracking-widest uppercase">
+      {
+        socials.map((s) => (
+          <li>
+            <a
+              href={s.href}
+              rel="noopener"
+              class="text-ink-muted transition-colors hover:text-accent"
+            >
+              {s.label}
+            </a>
+          </li>
+        ))
+      }
+      <li>
+        <a
+          href={site.resume[lang]}
+          class="text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent"
+        >
+          {t('nav.resume')}
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  // Indicador de sección activa en el rail. Sin librerías: un IntersectionObserver.
+  const links = document.querySelectorAll<HTMLAnchorElement>('[data-nav]');
+  if (links.length) {
+    const setActive = (id: string) => {
+      links.forEach((link) => {
+        const on = link.dataset.nav === id;
+        link.classList.toggle('text-ink', on);
+        link.classList.toggle('text-ink-dim', !on);
+        const bar = link.firstElementChild as HTMLElement | null;
+        bar?.classList.toggle('w-14', on);
+        bar?.classList.toggle('bg-ink', on);
+        bar?.classList.toggle('w-8', !on);
+        bar?.classList.toggle('bg-line-strong', !on);
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActive(visible.target.id);
+      },
+      { rootMargin: '-25% 0px -60% 0px', threshold: [0, 0.25, 0.5] },
+    );
+
+    links.forEach((link) => {
+      const section = document.getElementById(link.dataset.nav!);
+      if (section) observer.observe(section);
+    });
+  }
+</script>

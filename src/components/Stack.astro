@@ -1,0 +1,74 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import Section from './Section.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+/**
+ * Grouped by domain. `learning` is rendered differently so the page never
+ * blurs the line between what has shipped and what is being picked up.
+ */
+const groups = [
+  {
+    label: t('stack.core'),
+    items: ['Python', 'TypeScript', 'JavaScript', 'Django', 'Django REST Framework', 'React', 'Flask', 'Astro'],
+  },
+  {
+    label: t('stack.data'),
+    items: ['PostgreSQL', 'SQLite', 'Drizzle ORM', 'n8n', 'REST API design', 'Web scraping', 'Pandas', 'OpenCV'],
+  },
+  {
+    label: t('stack.ai'),
+    items: [
+      'Gemini API',
+      'OpenAI API',
+      'Ollama',
+      'Prompt design',
+      'Provider-agnostic LLM layers',
+      'Machine learning',
+      'scikit-learn',
+    ],
+  },
+  {
+    label: t('stack.infra'),
+    items: ['Docker', 'Docker Compose', 'Terraform', 'LocalStack', 'AWS Lambda', 'Cloudflare Tunnel', 'Git', 'Vercel'],
+  },
+];
+
+const learning = ['Offensive security', 'Burp Suite', 'Nmap', 'Linux internals', 'OSINT tooling', 'Network protocols'];
+---
+
+<Section
+  id="stack"
+  num="02"
+  eyebrow={t('stack.eyebrow')}
+  title={t('stack.title')}
+  body={t('stack.body')}
+>
+  <div class="grid gap-px overflow-hidden rounded-xl border border-line bg-line md:grid-cols-2">
+    {
+      groups.map((group) => (
+        <div class="bg-surface-raised px-6 py-7">
+          <h3 class="font-mono text-[0.7rem] tracking-[0.18em] text-ink-dim uppercase">
+            {group.label}
+          </h3>
+          <ul class="mt-4 flex flex-wrap gap-1.5">
+            {group.items.map((item) => (
+              <li class="tag">{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="mt-6 rounded-xl border border-dashed border-line-strong px-6 py-7">
+    <h3 class="font-mono text-[0.7rem] tracking-[0.18em] text-accent uppercase">
+      {t('stack.learning')}
+    </h3>
+    <ul class="mt-4 flex flex-wrap gap-1.5">
+      {learning.map((item) => <li class="tag">{item}</li>)}
+    </ul>
+  </div>
+</Section>

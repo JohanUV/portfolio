@@ -1,0 +1,48 @@
+---
+import { site } from '../data/site';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import Section from './Section.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const paragraphs = [t('about.p1'), t('about.p2'), t('about.p3'), t('about.p4'), t('about.p5')];
+
+const facts = [
+  {
+    label: lang === 'es' ? 'Formación' : 'Education',
+    value: site.university[lang],
+    note: `${site.semester[lang]} · ${lang === 'es' ? 'graduación estimada' : 'expected'} ${site.graduation}`,
+  },
+  {
+    label: lang === 'es' ? 'Ubicación' : 'Location',
+    value: site.location[lang],
+    note: `${site.timezone} · ${lang === 'es' ? 'disponible en remoto' : 'available remote'}`,
+  },
+  {
+    label: lang === 'es' ? 'Idiomas' : 'Languages',
+    value: lang === 'es' ? 'Español (nativo)' : 'Spanish (native)',
+    note: lang === 'es' ? 'Inglés B2 — conversación técnica' : 'English B2 — technical discussion',
+  },
+];
+---
+
+<Section id="about" num="04" eyebrow={t('about.eyebrow')} title={t('about.title')}>
+  <div class="flex max-w-2xl flex-col gap-5 leading-relaxed text-ink-muted">
+    {paragraphs.map((p) => <p>{p}</p>)}
+  </div>
+
+  <dl class="mt-12 grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-3">
+    {
+      facts.map((f) => (
+        <div class="bg-surface-raised px-5 py-6">
+          <dt class="font-mono text-[0.7rem] tracking-[0.15em] text-ink-dim uppercase">
+            {f.label}
+          </dt>
+          <dd class="mt-2.5 text-sm leading-snug text-ink">{f.value}</dd>
+          <dd class="mt-1 text-xs leading-snug text-ink-dim">{f.note}</dd>
+        </div>
+      ))
+    }
+  </dl>
+</Section>

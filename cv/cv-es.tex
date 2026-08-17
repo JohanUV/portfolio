@@ -1,0 +1,202 @@
+%% Jaren Untuña --- Curriculum Vitae (English)
+%% Compile:  tectonic cv-en.tex
+%% Plantilla propia: una columna, sin iconos, sin barras de "nivel de skill".
+%% Está pensada para pasar un ATS y para que una persona lo lea en 20 segundos.
+
+\documentclass[10.5pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{tgheros}
+\renewcommand*\familydefault{\sfdefault}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-noshorthands]{babel}
+\usepackage[
+  a4paper,
+  top=1.5cm, bottom=1.5cm, left=1.6cm, right=1.6cm,
+  footskip=0.8cm
+]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{microtype}
+
+\definecolor{ink}{HTML}{111318}
+\definecolor{muted}{HTML}{55606B}
+\definecolor{rule}{HTML}{C9D0D8}
+\definecolor{accent}{HTML}{0E7C6B}
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=accent,
+  linkcolor=accent,
+  pdftitle={Jaren Untuna - Ingeniero de Software - CV},
+  pdfauthor={Jaren Untuna},
+  pdfsubject={Curriculum Vitae},
+  pdfkeywords={software engineer, python, django, data pipelines, api integration, security}
+}
+
+\color{ink}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\emergencystretch}{2em}
+
+%% ---------------------------------------------------------------- headings
+\titleformat{\section}
+  {\normalfont\large\bfseries\scshape}
+  {}{0pt}{}
+  [\vspace{-0.55em}{\color{rule}\rule{\linewidth}{0.5pt}}]
+\titlespacing*{\section}{0pt}{1.15em}{0.6em}
+
+%% Entry header: title on the left, dates flush right.
+\newcommand{\entry}[2]{%
+  \begin{tabularx}{\linewidth}{@{}Xr@{}}
+    \textbf{#1} & {\small\color{muted}#2}
+  \end{tabularx}%
+  \vspace{0.15em}
+}
+
+%% One-line subtitle under an entry header.
+\newcommand{\subentry}[1]{{\small\color{muted}#1}\vspace{0.25em}}
+
+\newenvironment{points}
+  {\begin{itemize}[leftmargin=1.1em, itemsep=0.18em, topsep=0.25em, parsep=0pt, label=\textcolor{accent}{\small$\bullet$}]}
+  {\end{itemize}}
+
+%% Skill row: bold category, then the list.
+\newcommand{\skillrow}[2]{%
+  \begin{tabularx}{\linewidth}{@{}p{3.5cm}X@{}}
+    \textbf{#1} & #2
+  \end{tabularx}%
+  \vspace{0.15em}
+}
+
+\begin{document}
+
+%% ------------------------------------------------------------------ header
+{\Huge\bfseries Jaren Untuña}\\[0.35em]
+{\large\color{muted} Ingeniero de Software --- Pipelines de Datos, Integración de APIs e IA Aplicada}\\[0.7em]
+{\small
+Latacunga, Ecuador (GMT-5) \textbullet{} Disponible en remoto \\
+\href{mailto:jaren22uv@gmail.com}{jaren22uv@gmail.com} \textbullet{}
+\href{https://wa.me/593963607760}{+593 96 360 7760} \\
+\href{https://github.com/JohanUV}{github.com/JohanUV} \textbullet{}
+\href{https://www.linkedin.com/in/jaren-untu\%C3\%B1a-valiente-762799211/}{LinkedIn} \textbullet{}
+\href{https://tryhackme.com/p/jaren22uv}{TryHackMe}
+}
+
+\vspace{0.4em}
+{\color{rule}\rule{\linewidth}{0.9pt}}
+
+%% ----------------------------------------------------------------- summary
+\section*{Perfil}
+Estudiante de Ingeniería de Software (5.º semestre, ESPE Latacunga) que construye y entrega
+sistemas completos, no ejercicios. Mi trabajo se centra en extraer datos de fuentes que se
+resisten a ser leídas ---APIs estatales sin documentar, portales detrás de captchas, proveedores
+con esquemas incompatibles--- y volver el resultado lo bastante confiable como para decidir con
+él. Diseño con control de acceso, auditoría y protección de datos desde el inicio. Dos de mis
+proyectos fueron encargos de negocios locales; el resto es público en GitHub con la
+arquitectura documentada. En transición hacia seguridad ofensiva y OSINT.
+
+%% ---------------------------------------------------------------- projects
+\section*{Proyectos Destacados}
+
+\entry{Verum --- Plataforma de Debida Diligencia para Contratación}{2026}
+\subentry{Python, Flask, React, REST, RBAC \textbullet{} \href{https://github.com/JohanUV/Verum-EC}{github.com/JohanUV/Verum-EC}}
+\begin{points}
+  \item Integré \textbf{nueve fuentes públicas ecuatorianas} ---Función Judicial, SRI, SUPA,
+        ANT y listas de sanción OFAC/ONU--- en un informe de riesgo consolidado consultado
+        por cédula.
+  \item Resolví las fuentes JSF protegidas con captcha mediante \textbf{relay humano} en vez de
+        romperlas: la app muestra el captcha al usuario y continúa la sesión autenticada,
+        manteniendo la integración dentro de lo que cada fuente permite.
+  \item Etiqueté cada fuente con un estado de fiabilidad explícito (API en vivo, relay de
+        captcha, asistida) para que el informe nunca exagere su propia cobertura.
+  \item Construida para la LOPDP: permisos por rol, historial de auditoría completo de quién
+        consultó a quién, y exportación a PDF con folio y marca de agua para trazabilidad.
+\end{points}
+
+\entry{Job Radar --- Pipeline Automatizada de Inteligencia de Empleo}{2026}
+\subentry{Django, DRF, PostgreSQL, n8n, React, Docker, Gemini \textbullet{} \href{https://github.com/JohanUV/Job-Radar}{github.com/JohanUV/Job-Radar}}
+\begin{points}
+  \item Pipeline programada que recolecta vacantes de tres APIs de empleo cada seis horas,
+        normalizando cada proveedor a un esquema común mediante conectores por fuente.
+  \item Hice los duplicados \textbf{estructuralmente imposibles} forzando un hash SHA-256 único
+        de la URL a nivel de base de datos: reejecutar la pipeline no puede corromper datos,
+        sin importar la concurrencia.
+  \item Separé la orquestación (n8n: programación, descarga en paralelo, reintentos) de las
+        reglas de negocio (Django: validación, deduplicación, persistencia) --- añadir una fuente
+        no toca el backend.
+  \item Añadí una etapa LLM que puntúa afinidad CV--vacante 0--100 con Gemini, pull-based e
+        idempotente: puede caerse y reanudar sin doble facturación del modelo; guarda el
+        razonamiento y la versión del modelo junto a cada puntaje.
+\end{points}
+
+\entry{Análisis de Procesos Judiciales --- API Estatal por Ingeniería Inversa}{2026}
+\subentry{Python, HTTP traffic analysis, API specification \textbullet{} \href{https://github.com/JohanUV/Sistema-Analisis-Judicial}{github.com/JohanUV/Sistema-Analisis-Judicial}}
+\begin{points}
+  \item Reconstruí el contrato no documentado del servicio detrás del portal judicial del
+        Ecuador a partir del tráfico observado: dos endpoints, forma completa del payload,
+        paginación y los headers que el servidor valida realmente.
+  \item Identifiqué que el servicio valida \textbf{procedencia} (Origin/Referer) y no identidad,
+        y que su campo de captcha se acepta como constante --- un hallazgo de confianza en el
+        cliente documentado en la capa de servicio.
+  \item Documenté el resultado como referencia de API reutilizable en vez de dejarlo implícito
+        en el código de un scraper.
+\end{points}
+
+\entry{Class Attention --- Detección de Atención en el Aula}{2026}
+\subentry{Python, machine learning, computer vision, privacy by design}
+\begin{points}
+  \item Sistema de ML que estima la atención de los estudiantes a partir de video, validado en
+        sesiones reales de clase, dando al docente una señal accionable a mitad de lección.
+  \item Diseñado para que la salida útil sea un \textbf{agregado del aula}, nunca un registro por
+        estudiante --- el riesgo de privacidad se elimina en la arquitectura, no por política.
+  \item La protección de identidades fue una restricción desde la primera versión: los sujetos
+        son menores y una filtración sería irreparable.
+\end{points}
+
+%% ------------------------------------------------------------ client work
+\section*{Trabajo para Clientes}
+
+\entry{Cottullari --- Operadora de Turismo, Latacunga}{2026}
+\subentry{React, React Router, Vite, PHP, MySQL \textbullet{} \href{https://github.com/JohanUV/cottullari-react}{github.com/JohanUV/cottullari-react}}
+\begin{points}
+  \item Construí una SPA de siete rutas para una empresa de turismo: flota, servicios, destinos
+        y cotizaciones, con un formulario que persiste las solicitudes en MySQL.
+  \item Resolví las cinco páginas de destino con una sola ruta parametrizada: añadir un destino
+        es dato, no un componente nuevo.
+\end{points}
+
+\entry{Mashka Box --- Box de CrossFit, Latacunga}{2026}
+\subentry{HTML, CSS, responsive \textbullet{} \href{https://github.com/JohanUV/mashka-box}{github.com/JohanUV/mashka-box}}
+\begin{points}
+  \item Landing page mobile-first hecha para convertir una visita en una clase de prueba; HTML
+        y CSS a mano, sin framework, porque una página sin estado de aplicación no debería
+        hacer que el visitante descargue uno.
+\end{points}
+
+%% ------------------------------------------------------------------ skills
+\section*{Competencias Técnicas}
+\skillrow{Lenguajes}{Python, TypeScript, JavaScript, SQL, HTML, CSS}
+\skillrow{Backend}{Django, Django REST Framework, Flask, REST API design}
+\skillrow{Frontend}{React, React Router, Vite, Astro, Tailwind CSS}
+\skillrow{Datos}{PostgreSQL, SQLite, Drizzle ORM, Pandas, web scraping, normalización de esquemas}
+\skillrow{IA y ML}{Gemini API, OpenAI API, Ollama, OpenCV, scikit-learn, diseño de prompts}
+\skillrow{Automatización}{n8n, pipelines programadas, arquitecturas de conectores, bots de Telegram}
+\skillrow{Infraestructura}{Docker, Docker Compose, Terraform, LocalStack, AWS Lambda, Vercel, Git}
+\skillrow{Seguridad}{Control de acceso (RBAC), auditoría, autenticación por API key, cumplimiento de protección de datos}
+\skillrow{Aprendiendo}{Seguridad ofensiva, Burp Suite, Nmap, internals de Linux, OSINT}
+
+%% --------------------------------------------------------------- education
+\section*{Formación}
+\entry{Universidad de las Fuerzas Armadas ESPE --- Latacunga}{2024 --- 2028 (estimado)}
+\subentry{Ingeniería de Software \textbullet{} Cursando 5.º semestre}
+
+%% --------------------------------------------------------------- languages
+\section*{Idiomas}
+\skillrow{Español}{Nativo}
+\skillrow{Inglés}{B2 --- competencia profesional, cómodo en conversación técnica}
+
+\end{document}

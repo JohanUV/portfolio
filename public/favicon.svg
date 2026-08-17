@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="14" fill="#08090b"/>
+  <rect x="1.5" y="1.5" width="61" height="61" rx="12.5" fill="none" stroke="#2b323c" stroke-width="3"/>
+  <text x="32" y="43" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+        font-size="30" font-weight="700" fill="#5eead4" text-anchor="middle">JU</text>
+</svg>

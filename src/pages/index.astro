@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import HomeSections from '../components/HomeSections.astro';
+import { site } from '../data/site';
+
+const title = `${site.name} — Software Engineer`;
+const description =
+  'Software engineer in Latacunga, Ecuador. I build data pipelines, API integrations and applied-AI systems — nine government sources integrated, three undocumented APIs reverse-engineered. Moving toward offensive security.';
+---
+
+<Base title={title} description={description} bare>
+  <HomeSections />
+</Base>

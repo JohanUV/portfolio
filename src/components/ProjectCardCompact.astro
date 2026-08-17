@@ -1,0 +1,38 @@
+---
+import type { Project } from '../data/projects';
+import type { Lang } from '../i18n/ui';
+import { useTranslations, localizePath } from '../i18n/utils';
+
+interface Props {
+  project: Project;
+  lang: Lang;
+}
+
+const { project, lang } = Astro.props;
+const t = useTranslations(lang);
+const c = project[lang];
+const href = localizePath(lang, `/work/${project.slug}`);
+---
+
+<article class="card group flex h-full flex-col p-6">
+  <p class="font-mono text-xs text-ink-dim">{project.year}</p>
+
+  <h3 class="display-sm mt-3 text-xl">
+    <a href={href} class="after:absolute after:inset-0 after:content-['']">{c.title}</a>
+  </h3>
+
+  <p class="mt-1 text-xs text-ink-dim">{c.kind}</p>
+
+  <p class="mt-4 flex-1 text-sm leading-relaxed text-ink-muted">{c.tagline}</p>
+
+  <ul class="mt-5 flex flex-wrap gap-1.5">
+    {project.accentTags.map((tag) => <li class="tag tag-accent">{tag}</li>)}
+    {project.stack.slice(0, 3).map((tech) => <li class="tag">{tech}</li>)}
+  </ul>
+
+  <p
+    class="mt-5 text-sm font-medium text-accent transition-transform group-hover:translate-x-0.5"
+  >
+    {t('work.readCase')} <span aria-hidden="true">→</span>
+  </p>
+</article>

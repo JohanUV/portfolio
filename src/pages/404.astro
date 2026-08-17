@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+
+<Base title={`404 — ${site.name}`} description="Page not found">
+  <section class="shell flex min-h-[60vh] flex-col justify-center py-24">
+    <p class="font-mono text-sm text-accent">404</p>
+    <h1 class="mt-4 text-4xl font-semibold tracking-tight md:text-5xl">Page not found</h1>
+    <p class="mt-4 text-ink-muted">
+      That page does not exist. <span class="text-ink-dim">Esa página no existe.</span>
+    </p>
+    <div class="mt-8 flex gap-3">
+      <a
+        href="/"
+        class="rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-surface transition-colors hover:bg-accent-deep"
+      >
+        Back home
+      </a>
+      <a
+        href="/es/"
+        class="rounded-lg border border-line-strong px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:border-accent/50 hover:text-accent"
+      >
+        Volver al inicio
+      </a>
+    </div>
+  </section>
+</Base>

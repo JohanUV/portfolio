@@ -1,0 +1,32 @@
+---
+interface Props {
+  id: string;
+  num: string;
+  eyebrow: string;
+  title: string;
+  body?: string;
+}
+
+const { id, num, eyebrow, title, body } = Astro.props;
+---
+
+<!--
+  Sin contenedor horizontal propio: el ancho lo decide la columna que lo envuelve,
+  para que la misma sección sirva junto al rail lateral y en una página normal.
+-->
+<section id={id} class="scroll-mt-16 py-16 first:pt-0 md:py-20">
+  <div class="flex items-baseline gap-4">
+    <span class="section-num">{num}</span>
+    <p class="eyebrow">{eyebrow}</p>
+  </div>
+
+  <h2 class="display mt-5 text-[length:var(--text-h2)]">
+    {title}
+  </h2>
+
+  {body && <p class="mt-5 max-w-2xl leading-relaxed text-ink-muted">{body}</p>}
+
+  <div class="mt-12">
+    <slot />
+  </div>
+</section>
