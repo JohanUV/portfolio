@@ -15,17 +15,19 @@ if (!src) {
   process.exit(1);
 }
 
-// Recorte 3:4 calculado sobre el original 3024x4032: entra la cara y también
-// los brazos cruzados, que es lo que da presencia al retrato.
-const CROP = { left: 176, top: 300, width: 2600, height: 3467 };
+// Retrato profesional 4:5 (cabeza y hombros), calculado sobre el original
+// 3024x4032. Recorte ceñido a la cara con poco aire arriba: es lo que hace que
+// se lea como un headshot y no como una foto de cuerpo entero encogida.
+const CROP = { left: 690, top: 470, width: 1560, height: 1950 };
 
 // Recorte cuadrado más cerrado, solo para la miniatura de la tarjeta OG.
 const CROP_SQUARE = { left: 226, top: 300, width: 2500, height: 2500 };
 
 await sharp(src)
   .extract(CROP)
-  .resize(760, 1013, { fit: 'cover' })
-  .jpeg({ quality: 88, mozjpeg: true })
+  .resize(720, 900, { fit: 'cover' })
+  .modulate({ brightness: 1.04 })
+  .jpeg({ quality: 90, mozjpeg: true })
   .toFile(resolve(pub, 'portrait.jpg'));
 
 console.log('✓ public/portrait.jpg');

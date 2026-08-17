@@ -28,7 +28,7 @@ const otherHref = alternatePath(Astro.url, other);
 ---
 
 <header
-  class="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:flex-col lg:justify-between lg:py-16"
+  class="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:flex-col lg:justify-between lg:py-14"
 >
   <div>
     <div class="flex items-start justify-between gap-4">
@@ -49,17 +49,19 @@ const otherHref = alternatePath(Astro.url, other);
       <span class="block text-ink">{lastName}</span>
     </h1>
 
-    <p class="mt-7 max-w-md text-[length:var(--text-lead)] leading-snug text-ink">
+    <p class="mt-6 max-w-md text-[length:var(--text-lead)] leading-snug text-ink">
       {t('hero.tagline')}
     </p>
 
-    <p class="mt-5 max-w-md text-sm leading-relaxed text-ink-muted">
+    <!-- El párrafo largo solo aparece en móvil; en escritorio el rail se mantiene
+         compacto para que la foto no caiga bajo el pliegue. -->
+    <p class="mt-5 max-w-md text-sm leading-relaxed text-ink-muted lg:hidden">
       {t('hero.body')}
     </p>
 
     <!-- Navegación con indicador activo. Oculta en móvil: ahí basta con scrollear. -->
-    <nav class="mt-12 hidden lg:block" aria-label="Section">
-      <ul class="flex flex-col gap-3.5">
+    <nav class="mt-10 hidden lg:block" aria-label="Section">
+      <ul class="flex flex-col gap-3">
         {
           nav.map((item) => (
             <li>
@@ -79,24 +81,28 @@ const otherHref = alternatePath(Astro.url, other);
   </div>
 
   <div class="mt-12 lg:mt-0">
-    <div class="flex items-end gap-5">
+    <div class="flex items-stretch gap-5">
       {
         site.portrait && (
           <div class="group relative shrink-0">
+            <div
+              class="absolute -inset-1.5 -z-10 rounded-xl border border-line transition-colors duration-500 group-hover:border-accent/30"
+              aria-hidden="true"
+            />
             <img
               src={site.portrait}
               alt={site.name}
-              width="760"
-              height="1013"
+              width="720"
+              height="900"
               fetchpriority="high"
               decoding="async"
-              class="aspect-[3/4] w-28 rounded-lg border border-line-strong object-cover grayscale contrast-110 transition-all duration-500 group-hover:grayscale-0 group-hover:contrast-100"
+              class="aspect-[4/5] w-36 rounded-lg border border-line-strong object-cover grayscale contrast-105 transition-all duration-500 group-hover:grayscale-0 group-hover:contrast-100"
             />
           </div>
         )
       }
 
-      <div class="min-w-0">
+      <div class="flex min-w-0 flex-col justify-end">
         <p class="flex items-start gap-2.5 font-mono text-[0.7rem] leading-relaxed text-ink-muted">
           <span class="relative mt-1.5 flex size-1.5 shrink-0">
             <span
@@ -112,7 +118,7 @@ const otherHref = alternatePath(Astro.url, other);
       </div>
     </div>
 
-    <ul class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[0.7rem] tracking-widest uppercase">
+    <ul class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[0.7rem] tracking-widest uppercase">
       {
         socials.map((s) => (
           <li>
