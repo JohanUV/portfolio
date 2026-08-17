@@ -11,11 +11,11 @@ export const ui = {
     'nav.contact': 'Contact',
     'nav.resume': 'Résumé',
 
-    'hero.role': 'Software Engineer · Data & Automation',
+    'hero.role': 'Data · Automation · Security',
     'hero.tagline':
-      'I build secure, production-grade systems that make difficult data usable.',
+      'Software engineer focused on secure data systems, automation and applied AI.',
     'hero.body':
-      'Full-stack across data, backend and applied AI. I integrate sources others can’t reach, reverse-engineer what isn’t documented, and design security in from the first line.',
+      'My work: integrating sources others can’t reach, reverse-engineering what isn’t documented, and shipping the product on top — with security in the architecture, my area of specialisation.',
     'hero.techline': 'Python · Django · React · PostgreSQL · n8n · Docker',
     'hero.cv': 'Download CV',
     'hero.cta.work': 'See the work',
@@ -111,11 +111,11 @@ export const ui = {
     'nav.contact': 'Contacto',
     'nav.resume': 'CV',
 
-    'hero.role': 'Ingeniero de Software · Datos y Automatización',
+    'hero.role': 'Datos · Automatización · Seguridad',
     'hero.tagline':
-      'Construyo sistemas seguros y de nivel producción que vuelven usables los datos difíciles.',
+      'Ingeniero de software enfocado en sistemas de datos seguros, automatización e IA aplicada.',
     'hero.body':
-      'Full-stack en datos, backend e IA aplicada. Integro fuentes que otros no pueden alcanzar, hago ingeniería inversa de lo no documentado y diseño la seguridad desde la primera línea.',
+      'Mi trabajo: integrar fuentes que otros no alcanzan, hacer ingeniería inversa de lo que no está documentado y entregar el producto encima — con la seguridad en la arquitectura, mi área de especialización.',
     'hero.techline': 'Python · Django · React · PostgreSQL · n8n · Docker',
     'hero.cv': 'Descargar CV',
     'hero.cta.work': 'Ver proyectos',
