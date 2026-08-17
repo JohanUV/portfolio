@@ -15,17 +15,16 @@ if (!src) {
   process.exit(1);
 }
 
-// Retrato profesional 4:5, calculado sobre el original 3024x4032. Encuadre
-// medio: cabeza, hombros y el arranque de los brazos cruzados — con presencia,
-// sin ser un plano de cuerpo entero encogido.
-const CROP = { left: 470, top: 380, width: 2064, height: 2580 };
+// Retrato 3:4 calculado sobre el original 3024x4032: entra la cara, el torso y
+// los brazos cruzados. Es el encuadre original, el que da presencia al retrato.
+const CROP = { left: 176, top: 300, width: 2600, height: 3467 };
 
 // Recorte cuadrado más cerrado, solo para la miniatura de la tarjeta OG.
 const CROP_SQUARE = { left: 226, top: 300, width: 2500, height: 2500 };
 
 await sharp(src)
   .extract(CROP)
-  .resize(720, 900, { fit: 'cover' })
+  .resize(760, 1013, { fit: 'cover' })
   .modulate({ brightness: 1.04 })
   .jpeg({ quality: 90, mozjpeg: true })
   .toFile(resolve(pub, 'portrait.jpg'));

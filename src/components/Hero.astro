@@ -17,13 +17,10 @@ const techline = t('hero.techline').split(' · ');
   <div class="grid-lines absolute inset-0 -z-10 opacity-45" aria-hidden="true"></div>
 
   <div class="shell pt-14 pb-20 md:pt-20 md:pb-28">
-    <!--
-      Hero de dos bloques que sí cuadran: todo el texto a la izquierda, la foto
-      centrada verticalmente a la derecha para que llene el alto en vez de flotar
-      arriba dejando un vacío. En móvil se apila (foto primero).
-    -->
-    <div class="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
-      <div class="min-w-0 flex-1 order-2 lg:order-1">
+    <!-- Encuadre original: texto a la izquierda, foto a la derecha con la
+         disponibilidad y ubicación justo debajo de ella. -->
+    <div class="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_22rem] lg:gap-16">
+      <div class="min-w-0">
         <p class="eyebrow">{t('hero.role')}</p>
 
         <h1 class="display mt-6 text-[length:var(--text-display)]">
@@ -63,45 +60,47 @@ const techline = t('hero.techline').split(' · ');
             {t('hero.cta.contact')}
           </a>
         </div>
+
+        <ul class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[0.7rem] tracking-widest uppercase">
+          <li><a href={site.github} rel="noopener" class="text-ink-muted transition-colors hover:text-accent">GitHub</a></li>
+          <li><a href={site.linkedin} rel="noopener" class="text-ink-muted transition-colors hover:text-accent">LinkedIn</a></li>
+          <li><a href={`https://wa.me/${site.whatsapp}`} rel="noopener" class="text-ink-muted transition-colors hover:text-accent">WhatsApp</a></li>
+          <li><a href={`mailto:${site.email}`} class="text-ink-muted transition-colors hover:text-accent">Email</a></li>
+        </ul>
       </div>
 
       {
         site.portrait && (
-          <div class="group relative order-1 mx-auto w-52 shrink-0 sm:w-64 lg:order-2 lg:mx-0">
-            <div
-              class="absolute -inset-2.5 -z-10 rounded-2xl border border-line transition-colors duration-500 group-hover:border-accent/30"
-              aria-hidden="true"
-            />
-            <img
-              src={site.portrait}
-              alt={site.name}
-              width="720"
-              height="900"
-              fetchpriority="high"
-              decoding="async"
-              class="aspect-[4/5] w-full rounded-xl border border-line-strong object-cover grayscale contrast-105 transition-all duration-500 group-hover:grayscale-0 group-hover:contrast-100"
-            />
+          <div class="order-first mx-auto w-full max-w-64 lg:order-none lg:mx-0 lg:max-w-none">
+            <div class="group relative">
+              <div
+                class="absolute -inset-2.5 -z-10 rounded-2xl border border-line transition-colors duration-500 group-hover:border-accent/30"
+                aria-hidden="true"
+              />
+              <img
+                src={site.portrait}
+                alt={site.name}
+                width="760"
+                height="1013"
+                fetchpriority="high"
+                decoding="async"
+                class="aspect-[3/4] w-full rounded-xl border border-line-strong object-cover grayscale contrast-105 transition-all duration-500 group-hover:grayscale-0 group-hover:contrast-100"
+              />
+            </div>
+
+            <p class="mt-6 flex items-start gap-2.5 font-mono text-[0.7rem] leading-relaxed text-ink-muted">
+              <span class="relative mt-1.5 flex size-1.5 shrink-0">
+                <span class="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-70" />
+                <span class="relative inline-flex size-1.5 rounded-full bg-accent" />
+              </span>
+              <span>{t('hero.available')}</span>
+            </p>
+            <p class="mt-2 font-mono text-[0.7rem] text-ink-dim">
+              {site.location[lang]} · {site.timezone}
+            </p>
           </div>
         )
       }
-    </div>
-
-    <div class="mt-12 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-line pt-8">
-      <p class="flex items-center gap-2.5 font-mono text-[0.7rem] tracking-wide text-ink-muted">
-        <span class="relative flex size-1.5">
-          <span
-            class="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-70"
-          ></span>
-          <span class="relative inline-flex size-1.5 rounded-full bg-accent"></span>
-        </span>
-        {t('hero.available')}
-      </p>
-      <span class="hidden h-3 w-px bg-line-strong sm:block" aria-hidden="true"></span>
-      <ul class="flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[0.7rem] tracking-widest uppercase">
-        <li><a href={site.github} rel="noopener" class="text-ink-muted transition-colors hover:text-accent">GitHub</a></li>
-        <li><a href={site.linkedin} rel="noopener" class="text-ink-muted transition-colors hover:text-accent">LinkedIn</a></li>
-        <li><a href={`https://wa.me/${site.whatsapp}`} rel="noopener" class="text-ink-muted transition-colors hover:text-accent">WhatsApp</a></li>
-      </ul>
     </div>
   </div>
 </section>
