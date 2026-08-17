@@ -16,7 +16,27 @@ const techline = t('hero.techline').split(' · ');
   <div class="hero-wash absolute inset-0 -z-20" aria-hidden="true"></div>
   <div class="grid-lines absolute inset-0 -z-10 opacity-45" aria-hidden="true"></div>
 
-  <div class="shell pt-16 pb-20 md:pt-24 md:pb-28">
+  <div class="shell pt-14 pb-20 md:pt-20 md:pb-28">
+    {
+      site.portrait && (
+        <div class="group relative mb-9 w-32 sm:w-36">
+          <div
+            class="absolute -inset-2 -z-10 rounded-xl border border-line transition-colors duration-500 group-hover:border-accent/30"
+            aria-hidden="true"
+          />
+          <img
+            src={site.portrait}
+            alt={site.name}
+            width="720"
+            height="900"
+            fetchpriority="high"
+            decoding="async"
+            class="aspect-[4/5] w-full rounded-lg border border-line-strong object-cover grayscale contrast-105 transition-all duration-500 group-hover:grayscale-0 group-hover:contrast-100"
+          />
+        </div>
+      )
+    }
+
     <p class="eyebrow">{t('hero.role')}</p>
 
     <!-- Nombre a todo el ancho: el foco absoluto de la primera pantalla. -->

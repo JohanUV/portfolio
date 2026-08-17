@@ -28,26 +28,6 @@ const facts = [
 ---
 
 <Section id="about" num="04" eyebrow={t('about.eyebrow')} title={t('about.title')}>
-  {
-    site.portrait && (
-      <div class="group relative mb-10 w-40">
-        <div
-          class="absolute -inset-2 -z-10 rounded-xl border border-line transition-colors duration-500 group-hover:border-accent/30"
-          aria-hidden="true"
-        />
-        <img
-          src={site.portrait}
-          alt={site.name}
-          width="720"
-          height="900"
-          loading="lazy"
-          decoding="async"
-          class="aspect-[4/5] w-full rounded-lg border border-line-strong object-cover grayscale contrast-105 transition-all duration-500 group-hover:grayscale-0 group-hover:contrast-100"
-        />
-      </div>
-    )
-  }
-
   <div class="flex max-w-2xl flex-col gap-5 leading-relaxed text-ink-muted">
     {paragraphs.map((p) => <p>{p}</p>)}
   </div>
