@@ -15,10 +15,10 @@ if (!src) {
   process.exit(1);
 }
 
-// Retrato profesional 4:5 (cabeza y hombros), calculado sobre el original
-// 3024x4032. Recorte ceñido a la cara con poco aire arriba: es lo que hace que
-// se lea como un headshot y no como una foto de cuerpo entero encogida.
-const CROP = { left: 690, top: 470, width: 1560, height: 1950 };
+// Retrato profesional 4:5, calculado sobre el original 3024x4032. Encuadre
+// medio: cabeza, hombros y el arranque de los brazos cruzados — con presencia,
+// sin ser un plano de cuerpo entero encogido.
+const CROP = { left: 470, top: 380, width: 2064, height: 2580 };
 
 // Recorte cuadrado más cerrado, solo para la miniatura de la tarjeta OG.
 const CROP_SQUARE = { left: 226, top: 300, width: 2500, height: 2500 };
