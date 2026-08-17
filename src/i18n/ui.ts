@@ -13,9 +13,9 @@ export const ui = {
 
     'hero.role': 'Software Engineer · Data & Automation',
     'hero.tagline':
-      'I design and ship production systems end to end — data platforms, API integrations and applied AI — built secure and built to hold up under real use.',
+      'Full-stack engineer who ships complete, production-ready systems — secure by design, not patched after launch.',
     'hero.body':
-      'I work across the full stack, from the data pipeline to the interface, and I integrate the sources most teams write off as too messy to touch. Security is part of the design from the first line, not a patch after launch.',
+      'I work from the data pipeline to the interface, and I integrate the sources most teams avoid because they are too messy to touch — with access control and auditing built in from the first line.',
     'hero.techline': 'Python · Django · React · PostgreSQL · n8n · Docker',
     'hero.cv': 'Download CV',
     'hero.cta.work': 'See the work',
@@ -113,9 +113,9 @@ export const ui = {
 
     'hero.role': 'Ingeniero de Software · Datos y Automatización',
     'hero.tagline':
-      'Diseño y construyo sistemas de producción de extremo a extremo — plataformas de datos, integraciones de APIs e IA aplicada — seguros y hechos para resistir el uso real.',
+      'Ingeniero full-stack que entrega sistemas completos y listos para producción — seguros por diseño, no parcheados después del lanzamiento.',
     'hero.body':
-      'Trabajo en todo el stack, del pipeline de datos hasta la interfaz, e integro las fuentes que la mayoría descarta por difíciles. La seguridad es parte del diseño desde la primera línea, no un parche después del lanzamiento.',
+      'Trabajo desde el pipeline de datos hasta la interfaz, e integro las fuentes que la mayoría evita por difíciles — con control de acceso y auditoría desde la primera línea.',
     'hero.techline': 'Python · Django · React · PostgreSQL · n8n · Docker',
     'hero.cv': 'Descargar CV',
     'hero.cta.work': 'Ver proyectos',

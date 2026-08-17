@@ -70,10 +70,10 @@ const card = `<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
         font-weight="700" fill="#e9ebee">Johan Untuña</text>
 
   <text x="80" y="328" font-family="DejaVu Sans, sans-serif" font-size="27" fill="#98a1ab">
-    I design and ship production systems --
+    Full-stack engineer shipping complete,
   </text>
   <text x="80" y="368" font-family="DejaVu Sans, sans-serif" font-size="27" fill="#98a1ab">
-    data platforms, APIs and applied AI.
+    production-ready systems, secure by design.
   </text>
 
   <line x1="80" y1="452" x2="700" y2="452" stroke="#2b323c" stroke-width="1"/>
