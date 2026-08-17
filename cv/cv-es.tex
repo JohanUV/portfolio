@@ -22,15 +22,16 @@
 \usepackage{tabularx}
 \usepackage{microtype}
 
-\definecolor{ink}{HTML}{111318}
-\definecolor{muted}{HTML}{55606B}
-\definecolor{rule}{HTML}{C9D0D8}
-\definecolor{accent}{HTML}{0E7C6B}
+\definecolor{ink}{HTML}{1A1A1A}     % casi negro, para nombre y titulares
+\definecolor{muted}{HTML}{5F6670}   % gris medio, texto secundario
+\definecolor{soft}{HTML}{8A8F98}    % gris claro, etiquetas y fechas
+\definecolor{rule}{HTML}{D8DBDF}    % gris muy claro, lineas divisorias
+\definecolor{link}{HTML}{2B2B2B}    % gris oscuro para enlaces (sin azul)
 
 \hypersetup{
   colorlinks=true,
-  urlcolor=accent,
-  linkcolor=accent,
+  urlcolor=link,
+  linkcolor=link,
   pdftitle={Johan Untuna - Ingeniero de Software - CV},
   pdfauthor={Johan Untuna},
   pdfsubject={Curriculum Vitae},
@@ -46,13 +47,13 @@
 \titleformat{\section}
   {\normalfont\large\bfseries\scshape}
   {}{0pt}{}
-  [\vspace{-0.55em}{\color{rule}\rule{\linewidth}{0.5pt}}]
+  [\vspace{-0.5em}{\color{rule}\rule{\linewidth}{0.4pt}}]
 \titlespacing*{\section}{0pt}{1.15em}{0.6em}
 
 %% Entry header: title on the left, dates flush right.
 \newcommand{\entry}[2]{%
   \begin{tabularx}{\linewidth}{@{}Xr@{}}
-    \textbf{#1} & {\small\color{muted}#2}
+    \textbf{#1} & {\small\color{soft}#2}
   \end{tabularx}%
   \vspace{0.15em}
 }
@@ -61,7 +62,7 @@
 \newcommand{\subentry}[1]{{\small\color{muted}#1}\vspace{0.25em}}
 
 \newenvironment{points}
-  {\begin{itemize}[leftmargin=1.1em, itemsep=0.18em, topsep=0.25em, parsep=0pt, label=\textcolor{accent}{\small$\bullet$}]}
+  {\begin{itemize}[leftmargin=1.1em, itemsep=0.18em, topsep=0.25em, parsep=0pt, label=\textcolor{soft}{\footnotesize\textbullet}]}
   {\end{itemize}}
 
 %% Skill row: bold category, then the list.
@@ -86,8 +87,8 @@ Latacunga, Ecuador (GMT-5) \textbullet{} Disponible en remoto \\
 \href{https://tryhackme.com/p/jaren22uv}{TryHackMe}
 }
 
-\vspace{0.4em}
-{\color{rule}\rule{\linewidth}{0.9pt}}
+\vspace{0.45em}
+{\color{ink}\rule{\linewidth}{1.1pt}}
 
 %% ----------------------------------------------------------------- summary
 \section*{Perfil}
