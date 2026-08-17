@@ -13,7 +13,7 @@ export const ui = {
 
     'hero.role': 'Data · Automation · Security',
     'hero.tagline':
-      'Software engineer focused on secure data systems, automation and applied AI.',
+      'Full-stack software engineer focused on secure data systems, automation and applied AI.',
     'hero.body':
       'My work: integrating sources others can’t reach, reverse-engineering what isn’t documented, and shipping the product on top — with security in the architecture, my area of specialisation.',
     'hero.techline': 'Python · Django · React · PostgreSQL · n8n · Docker',
@@ -113,7 +113,7 @@ export const ui = {
 
     'hero.role': 'Datos · Automatización · Seguridad',
     'hero.tagline':
-      'Ingeniero de software enfocado en sistemas de datos seguros, automatización e IA aplicada.',
+      'Ingeniero de software full-stack enfocado en sistemas de datos seguros, automatización e IA aplicada.',
     'hero.body':
       'Mi trabajo: integrar fuentes que otros no alcanzan, hacer ingeniería inversa de lo que no está documentado y entregar el producto encima — con la seguridad en la arquitectura, mi área de especialización.',
     'hero.techline': 'Python · Django · React · PostgreSQL · n8n · Docker',
