@@ -5,28 +5,27 @@ interface Props {
   eyebrow: string;
   title: string;
   body?: string;
+  divider?: boolean;
 }
 
-const { id, num, eyebrow, title, body } = Astro.props;
+const { id, num, eyebrow, title, body, divider = true } = Astro.props;
 ---
 
-<!--
-  Sin contenedor horizontal propio: el ancho lo decide la columna que lo envuelve,
-  para que la misma sección sirva junto al rail lateral y en una página normal.
--->
-<section id={id} class="scroll-mt-16 py-16 first:pt-0 md:py-20">
-  <div class="flex items-baseline gap-4">
-    <span class="section-num">{num}</span>
-    <p class="eyebrow">{eyebrow}</p>
-  </div>
+<section id={id} class={`${divider ? 'hairline' : ''} scroll-mt-24`}>
+  <div class="shell py-20 md:py-28">
+    <div class="flex items-baseline gap-4">
+      <span class="section-num">{num}</span>
+      <p class="eyebrow">{eyebrow}</p>
+    </div>
 
-  <h2 class="display mt-5 text-[length:var(--text-h2)]">
-    {title}
-  </h2>
+    <h2 class="display mt-6 max-w-4xl text-[length:var(--text-h2)]">
+      {title}
+    </h2>
 
-  {body && <p class="mt-5 max-w-2xl leading-relaxed text-ink-muted">{body}</p>}
+    {body && <p class="mt-6 max-w-2xl leading-relaxed text-ink-muted">{body}</p>}
 
-  <div class="mt-12">
-    <slot />
+    <div class="mt-14">
+      <slot />
+    </div>
   </div>
 </section>

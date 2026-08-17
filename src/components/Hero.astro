@@ -1,0 +1,81 @@
+---
+import { site } from '../data/site';
+import { getLangFromUrl, useTranslations, localizePath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const home = localizePath(lang, '/');
+
+const [firstName, ...rest] = site.name.split(' ');
+const lastName = rest.join(' ');
+
+const techline = t('hero.techline').split(' · ');
+---
+
+<section class="relative overflow-hidden">
+  <div class="hero-wash absolute inset-0 -z-20" aria-hidden="true"></div>
+  <div class="grid-lines absolute inset-0 -z-10 opacity-45" aria-hidden="true"></div>
+
+  <div class="shell pt-16 pb-20 md:pt-24 md:pb-28">
+    <p class="eyebrow">{t('hero.role')}</p>
+
+    <!-- Nombre a todo el ancho: el foco absoluto de la primera pantalla. -->
+    <h1 class="display mt-6 text-[length:var(--text-display)]">
+      <span class="block text-ink-muted">{firstName}</span>
+      <span class="block text-ink">{lastName}</span>
+    </h1>
+
+    <p class="mt-8 max-w-3xl text-[length:var(--text-lead)] leading-snug text-ink">
+      {t('hero.tagline')}
+    </p>
+
+    <p class="mt-5 max-w-2xl leading-relaxed text-ink-muted">
+      {t('hero.body')}
+    </p>
+
+    <ul class="mt-8 flex flex-wrap gap-2">
+      {techline.map((tech) => <li class="tag">{tech}</li>)}
+    </ul>
+
+    <div class="mt-10 flex flex-wrap items-center gap-3">
+      <a
+        href={`${home}#work`}
+        class="rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-surface transition-colors hover:bg-accent-deep"
+      >
+        {t('hero.cta.work')}
+      </a>
+      <a
+        href={site.resume[lang]}
+        class="rounded-lg border border-line-strong px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:border-accent/50 hover:text-accent"
+      >
+        {t('nav.resume')} ↓
+      </a>
+      <a
+        href={`${home}#contact`}
+        class="rounded-lg border border-line px-5 py-2.5 text-sm font-medium text-ink-muted transition-colors hover:border-line-strong hover:text-ink"
+      >
+        {t('hero.cta.contact')}
+      </a>
+    </div>
+
+    <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
+      <p
+        class="flex items-center gap-2.5 font-mono text-[0.7rem] tracking-wide text-ink-muted"
+      >
+        <span class="relative flex size-1.5">
+          <span
+            class="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-70"
+          ></span>
+          <span class="relative inline-flex size-1.5 rounded-full bg-accent"></span>
+        </span>
+        {t('hero.available')}
+      </p>
+      <span class="hidden h-3 w-px bg-line-strong sm:block" aria-hidden="true"></span>
+      <ul class="flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[0.7rem] tracking-widest uppercase">
+        <li><a href={site.github} rel="noopener" class="text-ink-muted transition-colors hover:text-accent">GitHub</a></li>
+        <li><a href={site.linkedin} rel="noopener" class="text-ink-muted transition-colors hover:text-accent">LinkedIn</a></li>
+        <li><a href={`https://wa.me/${site.whatsapp}`} rel="noopener" class="text-ink-muted transition-colors hover:text-accent">WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+</section>

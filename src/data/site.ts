@@ -6,7 +6,7 @@
  */
 
 export const site = {
-  name: 'Jaren Untuña',
+  name: 'Johan Untuña',
   initials: 'JU',
 
   location: {
@@ -32,8 +32,8 @@ export const site = {
 
   // TODO: exporta tu CV a PDF y guárdalo en public/ con estos nombres
   resume: {
-    en: '/jaren-untuna-resume-en.pdf',
-    es: '/jaren-untuna-cv-es.pdf',
+    en: '/johan-untuna-resume-en.pdf',
+    es: '/johan-untuna-cv-es.pdf',
   },
 
   // Generado desde tu foto con: node scripts/make-images.mjs <ruta-a-la-foto>

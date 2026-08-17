@@ -5,13 +5,17 @@ import { getLangFromUrl } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 ---
 
-<dl class="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-3">
-  {
-    heroStats.map((stat) => (
-      <div class="bg-surface-raised px-5 py-6">
-        <dt class="display-sm text-4xl text-accent tabular-nums">{stat.value}</dt>
-        <dd class="mt-2.5 text-sm leading-snug text-ink-muted">{stat.label[lang]}</dd>
-      </div>
-    ))
-  }
-</dl>
+<div class="hairline">
+  <div class="shell py-14">
+    <dl class="grid grid-cols-1 gap-8 sm:grid-cols-3">
+      {
+        heroStats.map((stat) => (
+          <div class="flex flex-col">
+            <dt class="display-sm text-5xl text-accent tabular-nums md:text-6xl">{stat.value}</dt>
+            <dd class="mt-3 max-w-56 text-sm leading-snug text-ink-muted">{stat.label[lang]}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</div>

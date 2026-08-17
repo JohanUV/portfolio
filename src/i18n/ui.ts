@@ -13,9 +13,9 @@ export const ui = {
 
     'hero.role': 'Software Engineer · Data & Automation',
     'hero.tagline':
-      'I build systems that pull data out of sources that were never meant to be queried — and make it trustworthy.',
+      'I design and ship production systems end to end — data platforms, API integrations and applied AI — built secure and built to hold up under real use.',
     'hero.body':
-      'Full-stack across data pipelines, API integration and applied AI. Most of what I build involves undocumented endpoints, hostile inputs and data that has to be right, because someone is going to make a decision with it.',
+      'I work across the full stack, from the data pipeline to the interface, and I integrate the sources most teams write off as too messy to touch. Security is part of the design from the first line, not a patch after launch.',
     'hero.techline': 'Python · Django · React · PostgreSQL · n8n · Docker',
     'hero.cta.work': 'See the work',
     'hero.cta.contact': 'Get in touch',
@@ -112,9 +112,9 @@ export const ui = {
 
     'hero.role': 'Ingeniero de Software · Datos y Automatización',
     'hero.tagline':
-      'Construyo sistemas que extraen datos de fuentes que nunca se pensaron para ser consultadas — y los vuelven confiables.',
+      'Diseño y construyo sistemas de producción de extremo a extremo — plataformas de datos, integraciones de APIs e IA aplicada — seguros y hechos para resistir el uso real.',
     'hero.body':
-      'Full-stack entre pipelines de datos, integración de APIs e IA aplicada. Casi todo lo que construyo involucra endpoints no documentados, entradas hostiles y datos que tienen que estar bien, porque alguien va a tomar una decisión con ellos.',
+      'Trabajo en todo el stack, del pipeline de datos hasta la interfaz, e integro las fuentes que la mayoría descarta por difíciles. La seguridad es parte del diseño desde la primera línea, no un parche después del lanzamiento.',
     'hero.techline': 'Python · Django · React · PostgreSQL · n8n · Docker',
     'hero.cta.work': 'Ver proyectos',
     'hero.cta.contact': 'Contactar',

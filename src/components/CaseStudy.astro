@@ -80,8 +80,8 @@ const nextC = next[lang];
   </header>
 
   <div class="shell hairline pt-16 pb-8">
-    <div class="grid gap-14 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-16">
-      <div class="max-w-2xl">
+    <div class="mx-auto max-w-2xl">
+      <div>
         <section>
           <h2 class="font-mono text-[0.7rem] tracking-[0.18em] text-accent uppercase">
             {t('case.context')}
@@ -132,16 +132,14 @@ const nextC = next[lang];
         </section>
       </div>
 
-      <aside class="lg:sticky lg:top-24 lg:self-start">
-        <div class="rounded-xl border border-line bg-surface-raised p-6">
-          <h2 class="font-mono text-[0.7rem] tracking-[0.18em] text-ink-dim uppercase">
-            {t('case.stack')}
-          </h2>
-          <ul class="mt-4 flex flex-wrap gap-1.5">
-            {project.stack.map((tech) => <li class="tag">{tech}</li>)}
-          </ul>
-        </div>
-      </aside>
+      <div class="mt-14 rounded-xl border border-line bg-surface-raised p-6">
+        <h2 class="font-mono text-[0.7rem] tracking-[0.18em] text-ink-dim uppercase">
+          {t('case.stack')}
+        </h2>
+        <ul class="mt-4 flex flex-wrap gap-1.5">
+          {project.stack.map((tech) => <li class="tag">{tech}</li>)}
+        </ul>
+      </div>
     </div>
   </div>
 

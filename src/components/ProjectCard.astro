@@ -17,8 +17,8 @@ const num = String(index + 1).padStart(2, '0');
 ---
 
 <article class="card group p-6 md:p-8">
-  <div class="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-12">
-    <div class="min-w-0 flex-1">
+  <div class="flex flex-col gap-8">
+    <div class="min-w-0">
       <div class="flex items-center gap-3 font-mono text-xs text-ink-dim">
         <span class="text-accent">{num}</span>
         <span class="h-px w-6 bg-line-strong"></span>
@@ -71,14 +71,12 @@ const num = String(index + 1).padStart(2, '0');
       </div>
     </div>
 
-    <dl
-      class="grid w-full shrink-0 grid-cols-3 gap-px overflow-hidden rounded-lg border border-line bg-line lg:w-52 lg:grid-cols-1"
-    >
+    <dl class="grid grid-cols-3 gap-px overflow-hidden rounded-lg border border-line bg-line">
       {
         c.metrics.map((m) => (
-          <div class="bg-surface px-4 py-3.5">
-            <dt class="font-mono text-xl font-semibold text-ink tabular-nums">{m.value}</dt>
-            <dd class="mt-1 text-xs leading-snug text-ink-dim">{m.label}</dd>
+          <div class="bg-surface px-4 py-4">
+            <dt class="display-sm text-2xl text-accent tabular-nums">{m.value}</dt>
+            <dd class="mt-1.5 text-xs leading-snug text-ink-dim">{m.label}</dd>
           </div>
         ))
       }

@@ -68,13 +68,13 @@ const card = `<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
         letter-spacing="4" fill="#5eead4">SOFTWARE ENGINEER</text>
 
   <text x="80" y="248" font-family="DejaVu Sans, sans-serif" font-size="76"
-        font-weight="700" fill="#e9ebee">Jaren Untuña</text>
+        font-weight="700" fill="#e9ebee">Johan Untuña</text>
 
-  <text x="80" y="328" font-family="DejaVu Sans, sans-serif" font-size="28" fill="#98a1ab">
-    I build systems that pull data out of
+  <text x="80" y="328" font-family="DejaVu Sans, sans-serif" font-size="27" fill="#98a1ab">
+    I design and ship production systems --
   </text>
-  <text x="80" y="370" font-family="DejaVu Sans, sans-serif" font-size="28" fill="#98a1ab">
-    sources never meant to be queried.
+  <text x="80" y="368" font-family="DejaVu Sans, sans-serif" font-size="27" fill="#98a1ab">
+    data platforms, APIs and applied AI.
   </text>
 
   <line x1="80" y1="452" x2="700" y2="452" stroke="#2b323c" stroke-width="1"/>
