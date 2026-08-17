@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   // TODO: replace with your real domain once you buy it (e.g. https://johanuv.dev)
-  site: 'https://johanuv.vercel.app',
+  site: 'https://portfolio-johan-uv.vercel.app',
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'es'],

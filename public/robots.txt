@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://johanuv.vercel.app/sitemap-index.xml
+Sitemap: https://portfolio-johan-uv.vercel.app/sitemap-index.xml
