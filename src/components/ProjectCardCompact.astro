@@ -12,9 +12,27 @@ const { project, lang } = Astro.props;
 const t = useTranslations(lang);
 const c = project[lang];
 const href = localizePath(lang, `/work/${project.slug}`);
+const cover = project.shots?.[0];
 ---
 
-<article class="card group flex h-full flex-col p-6">
+<article class="card group flex h-full flex-col overflow-hidden">
+  {
+    cover && (
+      <div class="overflow-hidden border-b border-line bg-surface">
+        <img
+          src={cover.src}
+          alt={cover[lang].alt}
+          width={cover.width}
+          height={cover.height}
+          loading="lazy"
+          decoding="async"
+          class="aspect-[16/9] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+        />
+      </div>
+    )
+  }
+
+  <div class="flex flex-1 flex-col p-6">
   <p class="font-mono text-xs text-ink-dim">{project.year}</p>
 
   <h3 class="display-sm mt-3 text-xl">
@@ -35,4 +53,5 @@ const href = localizePath(lang, `/work/${project.slug}`);
   >
     {t('work.readCase')} <span aria-hidden="true">→</span>
   </p>
+  </div>
 </article>

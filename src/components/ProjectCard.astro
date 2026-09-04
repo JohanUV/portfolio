@@ -14,10 +14,11 @@ const t = useTranslations(lang);
 const c = project[lang];
 const href = localizePath(lang, `/work/${project.slug}`);
 const num = String(index + 1).padStart(2, '0');
+const cover = project.shots?.[0];
 ---
 
 <article class="card group p-6 md:p-8">
-  <div class="flex flex-col gap-8">
+  <div class:list={['grid gap-8', cover ? 'lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]' : 'lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]']}>
     <div class="min-w-0">
       <div class="flex items-center gap-3 font-mono text-xs text-ink-dim">
         <span class="text-accent">{num}</span>
@@ -71,15 +72,48 @@ const num = String(index + 1).padStart(2, '0');
       </div>
     </div>
 
-    <dl class="grid grid-cols-3 gap-px overflow-hidden rounded-lg border border-line bg-line">
-      {
-        c.metrics.map((m) => (
-          <div class="bg-surface px-4 py-4">
-            <dt class="display-sm text-2xl text-accent tabular-nums">{m.value}</dt>
-            <dd class="mt-1.5 text-xs leading-snug text-ink-dim">{m.label}</dd>
-          </div>
-        ))
-      }
-    </dl>
+    {
+      cover ? (
+        <div class="relative min-h-64 overflow-hidden rounded-lg border border-line bg-surface lg:min-h-0">
+          <img
+            src={cover.src}
+            alt={cover[lang].alt}
+            width={cover.width}
+            height={cover.height}
+            loading="lazy"
+            decoding="async"
+            class="aspect-[16/10] w-full object-cover object-left-top transition-transform duration-500 group-hover:scale-[1.015] lg:absolute lg:inset-0 lg:aspect-auto lg:h-full"
+          />
+        </div>
+      ) : (
+        <dl
+          class="metrics-side grid gap-px self-start overflow-hidden rounded-lg border border-line bg-line"
+          style={`--cols:${c.metrics.length}`}
+        >
+          {c.metrics.map((m) => (
+            <div class="bg-surface px-5 py-5">
+              <dt class="display-sm text-3xl text-accent tabular-nums">{m.value}</dt>
+              <dd class="mt-1.5 text-xs leading-snug text-ink-dim">{m.label}</dd>
+            </div>
+          ))}
+        </dl>
+      )
+    }
+
+    {
+      cover && (
+        <dl
+          class="grid gap-px overflow-hidden rounded-lg border border-line bg-line lg:col-span-2"
+          style={`grid-template-columns: repeat(${c.metrics.length}, minmax(0, 1fr))`}
+        >
+          {c.metrics.map((m) => (
+            <div class="bg-surface px-4 py-4">
+              <dt class="display-sm text-2xl text-accent tabular-nums">{m.value}</dt>
+              <dd class="mt-1.5 text-xs leading-snug text-ink-dim">{m.label}</dd>
+            </div>
+          ))}
+        </dl>
+      )
+    }
   </div>
 </article>

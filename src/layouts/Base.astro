@@ -142,7 +142,12 @@ const jsonLd = {
 
       if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && targets.length) {
         const groups = new Map<HTMLElement, number>();
+        const fold = window.innerHeight;
         targets.forEach((el) => {
+          // Lo que ya está a la vista al cargar se muestra de inmediato: el hero
+          // y las primeras cifras no deben aparecer en negro mientras el
+          // observer arranca.
+          if (el.getBoundingClientRect().top < fold) return;
           const parent = el.parentElement as HTMLElement;
           const idx = groups.get(parent) ?? 0;
           groups.set(parent, idx + 1);
@@ -164,7 +169,9 @@ const jsonLd = {
           { rootMargin: '0px 0px -8% 0px', threshold: 0.05 },
         );
 
-        targets.forEach((el) => io.observe(el));
+        targets.forEach((el) => {
+          if (el.classList.contains('reveal')) io.observe(el);
+        });
       }
     </script>
   </body>

@@ -6,16 +6,15 @@ export const ui = {
   en: {
     'nav.work': 'Work',
     'nav.stack': 'Stack',
-    'nav.security': 'Security',
     'nav.about': 'About',
     'nav.contact': 'Contact',
     'nav.resume': 'Résumé',
 
-    'hero.role': 'Data · Automation · Security',
+    'hero.role': 'Data · Automation · Applied AI',
     'hero.tagline':
       'Full-stack software engineer focused on secure data systems, automation and applied AI.',
     'hero.body':
-      'My work: integrating sources others can’t reach, reverse-engineering what isn’t documented, and shipping the product on top — with security in the architecture, my area of specialisation.',
+      'My work: integrating sources others can’t reach, reverse-engineering what isn’t documented, and shipping the product on top — with access control and traceability built into the schema, not bolted on later.',
     'hero.techline': 'Python · Django · React · PostgreSQL · n8n · Docker',
     'hero.cv': 'Download CV',
     'hero.cta.work': 'See the work',
@@ -39,6 +38,11 @@ export const ui = {
     'case.problem': 'The hard part',
     'case.decisions': 'Technical decisions',
     'case.outcome': 'What it does',
+    'case.evidence': 'Evidence',
+    'case.live.expand': 'Expand live preview',
+    'case.live.collapse': 'Collapse preview',
+    'case.live.open': 'Open in a new tab',
+    'case.live.note': 'This is the real site loading inside the page. Scroll and navigate it as you would normally.',
     'case.stack': 'Stack',
     'case.next': 'Next project',
 
@@ -52,28 +56,6 @@ export const ui = {
     'stack.infra': 'Infrastructure',
     'stack.learning': 'Currently learning',
 
-    'security.eyebrow': 'Where I am heading',
-    'security.title': 'Security engineering',
-    'security.body':
-      'I am moving toward offensive security and OSINT, and I am being upfront that this is a transition in progress rather than a credential I already hold. The reason I think the move is a natural one is that the work I have already done is the same work under a different name.',
-    'security.bridge.title': 'What already transfers',
-    'security.bridge.1.t': 'Attack-surface mapping',
-    'security.bridge.1.b':
-      'Reconstructing an undocumented API from observed traffic, then documenting endpoints, required headers and what the server actually validates — that is reconnaissance, and I have written the specification to prove it.',
-    'security.bridge.2.t': 'Control analysis',
-    'security.bridge.2.b':
-      'Finding that a captcha is enforced in the UI but accepted as a constant by the service is a client-side-trust finding. Recognizing the class of the flaw matters more than the individual instance.',
-    'security.bridge.3.t': 'Working within limits',
-    'security.bridge.3.b':
-      'Relaying a captcha to a human rather than defeating it, and documenting the sources that cannot be automated, is the judgement the field is actually hiring for. Access is a legal question before it is a technical one.',
-    'security.bridge.4.t': 'Handling regulated data',
-    'security.bridge.4.b':
-      'Building audit trails, role-based access and traceable exports because a data-protection law requires it — not after an auditor asks.',
-    'security.progress.title': 'In progress',
-    'security.progress.body':
-      'Working through hands-on labs and CTFs, aiming at a practical certification. The profile below is live and unedited — what is on it is what I have actually solved, which is the only version of this worth linking.',
-    'security.honest':
-      'No certifications yet. Listed here as a direction, not as experience.',
 
     'about.eyebrow': 'About',
     'about.title': 'The short version',
@@ -86,7 +68,7 @@ export const ui = {
     'about.p4':
       'I work fast because I use AI tooling seriously, as an engineering multiplier with review, not as a substitute for understanding the system. Every architectural decision on this page is one I can defend in a whiteboard interview, because I made it.',
     'about.p5':
-      'Right now I am deepening into offensive security while continuing to ship. If you are hiring for engineering work that touches systems, data or security, I would like to talk.',
+      'I keep building while I finish my degree, and I learn the next thing by shipping something with it. If you are hiring for engineering work that touches systems, data or automation, I would like to talk.',
 
     'contact.eyebrow': 'Contact',
     'contact.title': 'Let us talk',
@@ -106,16 +88,15 @@ export const ui = {
   es: {
     'nav.work': 'Proyectos',
     'nav.stack': 'Stack',
-    'nav.security': 'Seguridad',
     'nav.about': 'Sobre mí',
     'nav.contact': 'Contacto',
     'nav.resume': 'CV',
 
-    'hero.role': 'Datos · Automatización · Seguridad',
+    'hero.role': 'Datos · Automatización · IA aplicada',
     'hero.tagline':
       'Ingeniero de software full-stack enfocado en sistemas de datos seguros, automatización e IA aplicada.',
     'hero.body':
-      'Mi trabajo: integrar fuentes que otros no alcanzan, hacer ingeniería inversa de lo que no está documentado y entregar el producto encima — con la seguridad en la arquitectura, mi área de especialización.',
+      'Mi trabajo: integrar fuentes que otros no alcanzan, hacer ingeniería inversa de lo que no está documentado y entregar el producto encima — con control de acceso y trazabilidad dentro del esquema, no pegados después.',
     'hero.techline': 'Python · Django · React · PostgreSQL · n8n · Docker',
     'hero.cv': 'Descargar CV',
     'hero.cta.work': 'Ver proyectos',
@@ -139,6 +120,11 @@ export const ui = {
     'case.problem': 'La parte difícil',
     'case.decisions': 'Decisiones técnicas',
     'case.outcome': 'Qué hace',
+    'case.evidence': 'Evidencia',
+    'case.live.expand': 'Desplegar vista en vivo',
+    'case.live.collapse': 'Plegar vista',
+    'case.live.open': 'Abrir en pestaña nueva',
+    'case.live.note': 'Es la web real cargando dentro de esta página. Desplázala y navégala con normalidad.',
     'case.stack': 'Stack',
     'case.next': 'Siguiente proyecto',
 
@@ -152,28 +138,6 @@ export const ui = {
     'stack.infra': 'Infraestructura',
     'stack.learning': 'Aprendiendo ahora',
 
-    'security.eyebrow': 'Hacia dónde voy',
-    'security.title': 'Ingeniería de seguridad',
-    'security.body':
-      'Me estoy moviendo hacia seguridad ofensiva y OSINT, y lo digo de frente: es una transición en curso, no una credencial que ya tenga. La razón por la que creo que el paso es natural es que el trabajo que ya hice es el mismo trabajo con otro nombre.',
-    'security.bridge.title': 'Lo que ya transfiere',
-    'security.bridge.1.t': 'Mapeo de superficie de ataque',
-    'security.bridge.1.b':
-      'Reconstruir una API no documentada a partir del tráfico observado y documentar endpoints, headers requeridos y qué valida realmente el servidor — eso es reconocimiento, y escribí la especificación para probarlo.',
-    'security.bridge.2.t': 'Análisis de controles',
-    'security.bridge.2.b':
-      'Encontrar que un captcha se exige en la interfaz pero el servicio lo acepta como constante es un hallazgo de confianza en el cliente. Reconocer la clase de la falla importa más que la instancia concreta.',
-    'security.bridge.3.t': 'Trabajar dentro de los límites',
-    'security.bridge.3.b':
-      'Hacer relay de un captcha hacia una persona en vez de vencerlo, y documentar las fuentes que no se pueden automatizar, es el criterio por el que el campo realmente contrata. El acceso es una pregunta legal antes que técnica.',
-    'security.bridge.4.t': 'Manejo de datos regulados',
-    'security.bridge.4.b':
-      'Construir historial de auditoría, acceso por roles y exportaciones trazables porque una ley de protección de datos lo exige — no después de que lo pida un auditor.',
-    'security.progress.title': 'En curso',
-    'security.progress.body':
-      'Laboratorios prácticos y CTFs, apuntando a una certificación práctica. El perfil de abajo está en vivo y sin maquillar — lo que está ahí es lo que realmente he resuelto, que es la única versión de esto que vale la pena enlazar.',
-    'security.honest':
-      'Aún sin certificaciones. Listado aquí como dirección, no como experiencia.',
 
     'about.eyebrow': 'Sobre mí',
     'about.title': 'La versión corta',
@@ -186,7 +150,7 @@ export const ui = {
     'about.p4':
       'Trabajo rápido porque uso herramientas de IA en serio, como multiplicador de ingeniería y con revisión, no como sustituto de entender el sistema. Cada decisión de arquitectura de esta página es una que puedo defender en una entrevista de pizarrón, porque la tomé yo.',
     'about.p5':
-      'Ahora mismo estoy profundizando en seguridad ofensiva mientras sigo construyendo. Si contratas para trabajo de ingeniería que toque sistemas, datos o seguridad, me gustaría hablar.',
+      'Sigo construyendo mientras termino la carrera, y aprendo lo siguiente entregando algo hecho con eso. Si contratas para trabajo de ingeniería que toque sistemas, datos o automatización, me gustaría hablar.',
 
     'contact.eyebrow': 'Contacto',
     'contact.title': 'Hablemos',

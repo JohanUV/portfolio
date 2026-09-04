@@ -175,6 +175,18 @@
     background-color: color-mix(in oklab, var(--color-accent) 7%, transparent);
   }
 
+  /* Métricas al costado de una tarjeta sin portada: en fila en móvil, en
+     columna en escritorio (ocupan el hueco que dejaría la imagen). */
+  .metrics-side {
+    grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr));
+  }
+
+  @media (min-width: 1024px) {
+    .metrics-side {
+      grid-template-columns: 1fr;
+    }
+  }
+
   /* Prose links inside case-study body copy. */
   .link-underline {
     text-decoration: underline;

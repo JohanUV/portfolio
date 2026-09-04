@@ -1,4 +1,20 @@
 export type Decision = { title: string; body: string };
+
+/**
+ * Una evidencia visual: captura, diagrama o clip del sistema funcionando.
+ * `caption` es lo que hace que la imagen valga — sin pie de foto una captura
+ * solo prueba que existió una pantalla, no qué hace.
+ */
+export type Shot = {
+  src: string;
+  width: number;
+  height: number;
+  /** true para vídeo (mp4/webm) en vez de imagen. */
+  video?: boolean;
+  en: { alt: string; caption: string };
+  es: { alt: string; caption: string };
+};
+
 export type Metric = { value: string; label: string };
 
 export type LocaleContent = {
@@ -20,6 +36,8 @@ export type Project = {
   repo?: string;
   demo?: string;
   stack: string[];
+  /** Evidencia. La primera se usa como portada en la tarjeta del listado. */
+  shots?: Shot[];
   accentTags: string[];
   en: LocaleContent;
   es: LocaleContent;
@@ -32,7 +50,25 @@ export const projects: Project[] = [
     featured: true,
     year: '2026',
     repo: 'https://github.com/JohanUV/Verum-EC',
+    demo: 'https://verum-ec.onrender.com/',
     stack: ['Python', 'Flask', 'React', 'Vite', 'REST', 'PDF', 'RBAC'],
+    shots: [
+      {
+        src: '/shots/verum-home.jpg',
+        width: 1512,
+        height: 800,
+        en: {
+          alt: 'Verum landing page with a sample verified profile and risk score',
+          caption:
+            'Verum, deployed and public. The landing shows the shape of a report: sources consulted, findings, and a 0\u2013100 risk score. The full search requires an account because it processes real personal data.',
+        },
+        es: {
+          alt: 'Portada de Verum con un perfil verificado de ejemplo y su score de riesgo',
+          caption:
+            'Verum, desplegado y p\u00fablico. La portada muestra la forma de un informe: fuentes consultadas, hallazgos y un score de riesgo de 0 a 100. La b\u00fasqueda completa exige cuenta porque procesa datos personales reales.',
+        },
+      },
+    ],
     accentTags: ['Data integration', 'OSINT', 'Compliance'],
     en: {
       title: 'Verum',
@@ -125,6 +161,23 @@ export const projects: Project[] = [
     year: '2026',
     repo: 'https://github.com/JohanUV/Job-Radar',
     stack: ['Django', 'DRF', 'PostgreSQL', 'n8n', 'React', 'Docker', 'Gemini'],
+    shots: [
+      {
+        src: '/shots/job-radar-tablero.png',
+        width: 1014,
+        height: 690,
+        en: {
+          alt: 'Job Radar kanban board with vacancies in five stages',
+          caption:
+            'The board, with real vacancies collected by the pipeline. Every card carries its source \u2014 remotive, arbeitnow \u2014 so a listing can always be traced back to where it came from.',
+        },
+        es: {
+          alt: 'Tablero kanban de Job Radar con vacantes en cinco etapas',
+          caption:
+            'El tablero, con vacantes reales recogidas por el pipeline. Cada tarjeta lleva su fuente \u2014remotive, arbeitnow\u2014 para que una oferta siempre se pueda rastrear hasta su origen.',
+        },
+      },
+    ],
     accentTags: ['Data pipeline', 'Automation', 'LLM'],
     en: {
       title: 'Job Radar',
@@ -600,17 +653,35 @@ export const projects: Project[] = [
     featured: false,
     year: '2026',
     repo: 'https://github.com/JohanUV/cottullari-react',
+    demo: 'https://cottullari.com/',
     stack: ['React', 'React Router', 'Vite', 'PHP', 'MySQL', 'CSS'],
+    shots: [
+      {
+        src: '/shots/cottullari-home.jpg',
+        width: 1456,
+        height: 837,
+        en: {
+          alt: 'Cottullari home page, live at cottullari.com',
+          caption:
+            'Live at cottullari.com, on the company\u2019s own domain. Open it below and navigate it: fleet, destinations and the quote form are all real.',
+        },
+        es: {
+          alt: 'Portada de Cottullari, en vivo en cottullari.com',
+          caption:
+            'En vivo en cottullari.com, en el dominio propio de la empresa. \u00c1brela abajo y nav\u00e9gala: flota, destinos y el formulario de cotizaci\u00f3n son reales.',
+        },
+      },
+    ],
     accentTags: ['Client work'],
     en: {
       title: 'Cottullari',
       kind: 'Tourism company site · Latacunga, Ecuador',
       tagline:
-        'A single-page application for an Ecuadorian tourism operator, with a quote form that writes straight to their database.',
+        'The production website of an Ecuadorian tourism operator — live on the company\u2019s own domain, presenting a 22-vehicle fleet and writing every enquiry into their database.',
       summary:
-        'A multi-section site for a tourism company in Latacunga: fleet, services, destinations by region, and a quote request form. Built as a React SPA with client-side routing, backed by a PHP endpoint that persists enquiries to MySQL.',
+        'The public site of Cottullari S.A., a tourism transport company operating out of Latacunga since 2010. Seven routes covering fleet, services and destinations across the Costa, Sierra and Amazon regions plus Colombia and Peru, and a quote form that captures destination, passenger count and travel date straight into MySQL. It is live at cottullari.com and it is how the company receives enquiries.',
       context:
-        'A tourism operator needs two things from a website: it has to make the fleet and the destinations look worth booking, and it has to capture an enquiry without the visitor leaving the page.',
+        'An operator running 22 vehicles was taking every booking request over WhatsApp, unstructured. The site had to do two things: make the fleet and the destinations look worth booking, and capture a structured enquiry — destination, passengers, date — without the visitor leaving the page.',
       problem:
         'The destination pages are the same layout with different content, one per region. Hard-coding a separate page per region means every future destination is a code change and the routes drift apart over time.',
       decisions: [
@@ -624,11 +695,13 @@ export const projects: Project[] = [
         },
       ],
       outcome: [
+        'Live in production at cottullari.com, on the company\u2019s own domain.',
         'Seven routes plus a 404, with a shared layout and client-side navigation.',
         'Destination detail pages driven by a URL parameter rather than duplicated components.',
         'Quote form persisting to MySQL, plus direct WhatsApp contact.',
       ],
       metrics: [
+        { value: '22', label: 'fleet vehicles presented' },
         { value: '7', label: 'routes' },
         { value: '5', label: 'regions covered' },
       ],
@@ -637,11 +710,11 @@ export const projects: Project[] = [
       title: 'Cottullari',
       kind: 'Sitio para empresa de turismo · Latacunga, Ecuador',
       tagline:
-        'Una SPA para un operador turístico ecuatoriano, con formulario de cotización que escribe directo en su base de datos.',
+        'La web en producción de un operador turístico ecuatoriano — en vivo en el dominio propio de la empresa, con una flota de 22 unidades y cada solicitud escrita en su base de datos.',
       summary:
-        'Sitio de varias secciones para una empresa de turismo en Latacunga: flota, servicios, destinos por región y formulario de cotización. Construido como SPA en React con enrutamiento del lado cliente, respaldado por un endpoint PHP que persiste las solicitudes en MySQL.',
+        'La web pública de Cottullari S.A., empresa de transporte turístico que opera desde Latacunga desde 2010. Siete rutas que cubren flota, servicios y destinos por Costa, Sierra y Amazonía además de Colombia y Perú, y un formulario de cotización que captura destino, número de pasajeros y fecha directo a MySQL. Está en vivo en cottullari.com y es por donde la empresa recibe sus solicitudes.',
       context:
-        'Un operador turístico necesita dos cosas de su web: que la flota y los destinos se vean dignos de reservar, y capturar la solicitud sin que el visitante tenga que salir de la página.',
+        'Un operador con 22 unidades recibía todas las solicitudes por WhatsApp, sin estructura. La web tenía que hacer dos cosas: que la flota y los destinos se vean dignos de reservar, y capturar una solicitud estructurada —destino, pasajeros, fecha— sin que el visitante tenga que salir de la página.',
       problem:
         'Las páginas de destino son el mismo layout con distinto contenido, una por región. Programar una página aparte por región convierte cada destino futuro en un cambio de código y hace que las rutas se desalineen con el tiempo.',
       decisions: [
@@ -655,11 +728,13 @@ export const projects: Project[] = [
         },
       ],
       outcome: [
+        'En producción en cottullari.com, en el dominio propio de la empresa.',
         'Siete rutas más un 404, con layout compartido y navegación del lado cliente.',
         'Páginas de detalle de destino resueltas por parámetro de URL en vez de componentes duplicados.',
         'Formulario de cotización que persiste en MySQL, más contacto directo por WhatsApp.',
       ],
       metrics: [
+        { value: '22', label: 'unidades de flota presentadas' },
         { value: '7', label: 'rutas' },
         { value: '5', label: 'regiones cubiertas' },
       ],
@@ -672,15 +747,33 @@ export const projects: Project[] = [
     featured: false,
     year: '2026',
     repo: 'https://github.com/JohanUV/mashka-box',
+    demo: 'https://johanuv.github.io/mashka-box/',
     stack: ['HTML', 'CSS', 'Responsive design'],
+    shots: [
+      {
+        src: '/shots/mashka-home.jpg',
+        width: 1512,
+        height: 800,
+        en: {
+          alt: 'Mashka Box landing page hero',
+          caption:
+            'Live on GitHub Pages, with the gym\u2019s own photography. Scroll the embedded preview below to walk through all nine sections.',
+        },
+        es: {
+          alt: 'Portada de la landing de Mashka Box',
+          caption:
+            'En vivo en GitHub Pages, con fotograf\u00eda propia del gimnasio. Despliega la vista de abajo y recorre las nueve secciones.',
+        },
+      },
+    ],
     accentTags: ['Client work'],
     en: {
       title: 'Mashka Box',
       kind: 'CrossFit gym landing page · Latacunga, Ecuador',
       tagline:
-        'A landing page for a local CrossFit box, built to turn a visitor into a trial class.',
+        'A live one-page site for a local CrossFit box — nine sections, the gym\u2019s own photography, and one job: turn a visitor into a trial class.',
       summary:
-        'A landing page for a CrossFit gym in Latacunga. One page, one job: communicate what the box is, who trains there, and get the visitor to book a first session.',
+        'A single-page site for a CrossFit gym in Latacunga, live on GitHub Pages. Nine anchored sections — the gym, the gallery, benefits, plans, class schedule, location and contact — all on one document, shot with the box\u2019s own photography, with WhatsApp booking one tap away from anywhere on the page.',
       context:
         'A local gym does not need a website with ten pages. It needs one page that loads instantly on a phone — because that is where people find it — and makes booking a trial obvious.',
       problem:
@@ -692,20 +785,23 @@ export const projects: Project[] = [
         },
       ],
       outcome: [
-        'Single-page layout, responsive, mobile first.',
-        'Direct booking path as the primary call to action.',
+        'Live and public on GitHub Pages, the gym\u2019s working site.',
+        'Nine sections on a single document, responsive, mobile first.',
+        'WhatsApp booking reachable from every section as the primary call to action.',
       ],
       metrics: [
-        { value: '1', label: 'page, zero JS frameworks' },
+        { value: '9', label: 'sections, one page' },
+        { value: '0', label: 'JS frameworks' },
+        { value: '1', label: 'tap to book' },
       ],
     },
     es: {
       title: 'Mashka Box',
       kind: 'Landing page para box de CrossFit · Latacunga, Ecuador',
       tagline:
-        'Landing page para un box de CrossFit local, hecha para convertir una visita en una clase de prueba.',
+        'Web en vivo de una sola página para un box de CrossFit local — nueve secciones, fotografía propia del gimnasio y un solo objetivo: convertir una visita en una clase de prueba.',
       summary:
-        'Landing page para un gimnasio de CrossFit en Latacunga. Una página, un objetivo: comunicar qué es el box, quién entrena ahí, y lograr que el visitante reserve su primera sesión.',
+        'Web de una sola página para un gimnasio de CrossFit en Latacunga, en vivo en GitHub Pages. Nueve secciones ancladas —el box, la galería, beneficios, planes, horarios, ubicación y contacto— todas en un mismo documento, con fotografía propia del gimnasio y la reserva por WhatsApp a un toque desde cualquier punto de la página.',
       context:
         'Un gimnasio local no necesita una web de diez páginas. Necesita una página que cargue al instante en el celular —porque ahí es donde lo encuentran— y que haga obvio reservar una prueba.',
       problem:
@@ -717,11 +813,14 @@ export const projects: Project[] = [
         },
       ],
       outcome: [
-        'Layout de una sola página, responsive, pensado primero para móvil.',
-        'Ruta de reserva directa como llamada a la acción principal.',
+        'En vivo y público en GitHub Pages, es la web que usa el gimnasio.',
+        'Nueve secciones en un solo documento, responsive, primero móvil.',
+        'Reserva por WhatsApp accesible desde cada sección como llamada a la acción principal.',
       ],
       metrics: [
-        { value: '1', label: 'página, cero frameworks JS' },
+        { value: '9', label: 'secciones, una página' },
+        { value: '0', label: 'frameworks JS' },
+        { value: '1', label: 'toque para reservar' },
       ],
     },
   },
