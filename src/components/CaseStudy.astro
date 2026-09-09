@@ -65,6 +65,18 @@ const shots = project.shots ?? [];
             </a>
           )
         }
+        {
+          project.doc && (
+            <a
+              href={project.doc.url}
+              target="_blank"
+              rel="noopener"
+              class="rounded-lg border border-line-strong px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-accent/50 hover:text-accent"
+            >
+              {project.doc.label[lang]} <span aria-hidden="true">↗</span>
+            </a>
+          )
+        }
       </div>
 
       <dl

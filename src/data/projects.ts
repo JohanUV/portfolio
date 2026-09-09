@@ -36,6 +36,8 @@ export type Project = {
   repo?: string;
   demo?: string;
   stack: string[];
+  /** Documento externo destacado (p. ej. una especificación); se muestra como botón en el case study. */
+  doc?: { url: string; label: { en: string; es: string } };
   /** Evidencia. La primera se usa como portada en la tarjeta del listado;
    *  el resto se muestra plegado en el case study. */
   shots?: Shot[];
@@ -331,8 +333,30 @@ export const projects: Project[] = [
     featured: true,
     year: '2026',
     repo: 'https://github.com/JohanUV/Sistema-Analisis-Judicial',
+    demo: 'https://judicial-analisis.onrender.com/',
+    doc: {
+      url: 'https://github.com/JohanUV/Sistema-Analisis-Judicial/blob/main/docs/API-SATJE.md',
+      label: { en: 'API spec', es: 'Especificación de la API' },
+    },
     stack: ['Python', 'HTTP', 'Traffic analysis', 'API specification', 'Data analysis', 'LaTeX'],
     accentTags: ['Reverse engineering', 'Recon', 'Public data'],
+    shots: [
+      {
+        src: '/shots/judicial-home.jpg',
+        width: 1456,
+        height: 829,
+        en: {
+          alt: 'Public edition of the judicial analysis dashboard, live on Render',
+          caption:
+            'The public edition, live on Render. It shows only the open data of the Judicial Observatory (CC-BY-4.0): case movement by chamber, resolution rate and dismissals by province. The by-national-ID lookup against the court service runs only in the local install \u2014 mass access to third parties\u2019 records is a legal question before a technical one, so the reverse-engineered API is documented rather than exposed as a tool.',
+        },
+        es: {
+          alt: 'Edición pública del panel de análisis judicial, en vivo en Render',
+          caption:
+            'La edición pública, en vivo en Render. Muestra solo los datos abiertos del Observatorio Judicial (CC-BY-4.0): movimiento de causas por sala, tasa de resolución y destituciones por provincia. La consulta por cédula contra el servicio judicial corre solo en la instalación local \u2014 el acceso masivo a registros de terceros es una cuestión legal antes que técnica, así que la API deducida por ingeniería inversa se documenta en vez de exponerse como herramienta.',
+        },
+      },
+    ],
     en: {
       title: 'Judicial Records Analysis',
       kind: 'Reverse-engineered access to a national court system',
@@ -354,11 +378,16 @@ export const projects: Project[] = [
           body: 'The service rejects requests that do not carry the expected Origin and Referer headers — it validates provenance rather than identity. Notably, the request body carries a recaptcha field that the server accepts as a constant string, meaning the captcha is decorative at the API layer. Documenting that distinction is the entire finding: the control exists in the UI and not in the service.',
         },
         {
+          title: 'Publish the analysis, not the harvester',
+          body: 'The public deployment serves only the open-data dashboards and the dismissals map; the by-ID, bulk and ID-generation routes return 403 online and run only in a local install. A service that pulls arbitrary people\u2019s records at scale is personal-data processing without a legal basis, and the client-side-only captcha means the operator has no real barrier \u2014 so the finding is shipped as a written spec, not as a live scraper anyone can point at citizens.',
+        },
+        {
           title: 'Write it down as a specification',
           body: 'The result is documented as an API reference — endpoints, methods, payloads, headers, response shapes — rather than left implicit in scraper code. Recon that is not written down is not reusable, and a mapped attack surface is only useful to a team if it survives outside the head of the person who mapped it.',
         },
       ],
       outcome: [
+        'Public edition deployed on Render with the open-data dashboards; the court-lookup routes are disabled online and documented instead.',
         'Two undocumented endpoints fully mapped and documented as a reusable API reference.',
         'Header-based provenance validation identified and characterized.',
         'A client-side-only captcha control documented at the service layer.',
@@ -390,11 +419,16 @@ export const projects: Project[] = [
           body: 'El servicio rechaza peticiones que no llevan los headers Origin y Referer esperados — valida procedencia, no identidad. Y de forma notable, el cuerpo de la petición lleva un campo recaptcha que el servidor acepta como una cadena constante, o sea que el captcha es decorativo en la capa de API. Documentar esa distinción es el hallazgo completo: el control existe en la interfaz y no en el servicio.',
         },
         {
+          title: 'Publicar el análisis, no el recolector',
+          body: 'El despliegue público sirve solo los paneles de datos abiertos y el mapa de destituciones; las rutas por cédula, masiva y de generación de cédulas devuelven 403 en internet y solo corren en una instalación local. Un servicio que extrae registros de cualquier persona a escala es tratamiento de datos personales sin base legal, y el captcha solo del lado cliente significa que el operador no tiene barrera real \u2014 así que el hallazgo se entrega como especificación escrita, no como un scraper en vivo que alguien pueda apuntar contra la ciudadanía.',
+        },
+        {
           title: 'Escribirlo como especificación',
           body: 'El resultado está documentado como referencia de API —endpoints, métodos, payloads, headers, formas de respuesta— en vez de quedar implícito dentro del código de un scraper. El reconocimiento que no se escribe no es reutilizable, y una superficie de ataque mapeada solo le sirve a un equipo si sobrevive fuera de la cabeza de quien la mapeó.',
         },
       ],
       outcome: [
+        'Edición pública desplegada en Render con los paneles de datos abiertos; las rutas de consulta judicial quedan deshabilitadas en línea y documentadas en su lugar.',
         'Dos endpoints no documentados mapeados por completo y documentados como referencia de API reutilizable.',
         'Validación de procedencia basada en headers identificada y caracterizada.',
         'Un control de captcha solo del lado cliente documentado en la capa de servicio.',
