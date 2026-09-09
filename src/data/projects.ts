@@ -36,8 +36,11 @@ export type Project = {
   repo?: string;
   demo?: string;
   stack: string[];
-  /** Evidencia. La primera se usa como portada en la tarjeta del listado. */
+  /** Evidencia. La primera se usa como portada en la tarjeta del listado;
+   *  el resto se muestra plegado en el case study. */
   shots?: Shot[];
+  /** Texto del botón que despliega el resto de la evidencia. */
+  moreEvidenceLabel?: { en: string; es: string };
   accentTags: string[];
   en: LocaleContent;
   es: LocaleContent;
@@ -160,6 +163,8 @@ export const projects: Project[] = [
     featured: true,
     year: '2026',
     repo: 'https://github.com/JohanUV/Job-Radar',
+    demo: 'https://johanuv.github.io/Job-Radar/',
+    moreEvidenceLabel: { en: 'Expand the n8n orchestration', es: 'Desplegar la orquestación en n8n' },
     stack: ['Django', 'DRF', 'PostgreSQL', 'n8n', 'React', 'Docker', 'Gemini'],
     shots: [
       {
@@ -169,12 +174,57 @@ export const projects: Project[] = [
         en: {
           alt: 'Job Radar kanban board with vacancies in five stages',
           caption:
-            'The board, with real vacancies collected by the pipeline. Every card carries its source \u2014 remotive, arbeitnow \u2014 so a listing can always be traced back to where it came from.',
+            'The board, live at johanuv.github.io/Job-Radar. Every card carries its source \u2014 remotive, arbeitnow \u2014 so a listing can always be traced back to where it came from.',
         },
         es: {
           alt: 'Tablero kanban de Job Radar con vacantes en cinco etapas',
           caption:
-            'El tablero, con vacantes reales recogidas por el pipeline. Cada tarjeta lleva su fuente \u2014remotive, arbeitnow\u2014 para que una oferta siempre se pueda rastrear hasta su origen.',
+            'El tablero, en vivo en johanuv.github.io/Job-Radar. Cada tarjeta lleva su fuente \u2014remotive, arbeitnow\u2014 para que una oferta siempre se pueda rastrear hasta su origen.',
+        },
+      },
+      {
+        src: '/shots/job-radar-n8n-radar.png',
+        width: 1380,
+        height: 600,
+        en: {
+          alt: 'n8n execution of the radar-remotive workflow, every node green, succeeded in 1m 20s',
+          caption:
+            'The collector, as it ran in production: three sources fetched in parallel (18 + 9 + 20 items), merged into 47 vacancies and posted to the API in one call. The first two nodes wake the API up and wait for it \u2014 the hosting plan puts it to sleep between runs.',
+        },
+        es: {
+          alt: 'Ejecuci\u00f3n en n8n del flujo radar-remotive, todos los nodos en verde, completada en 1 min 20 s',
+          caption:
+            'El recolector tal como corri\u00f3 en producci\u00f3n: tres fuentes en paralelo (18 + 9 + 20 \u00edtems), fusionadas en 47 vacantes y enviadas a la API en una sola llamada. Los dos primeros nodos despiertan la API y esperan a que arranque: el plan de hosting la duerme entre corridas.',
+        },
+      },
+      {
+        src: '/shots/job-radar-n8n-evaluador.png',
+        width: 1440,
+        height: 220,
+        en: {
+          alt: 'n8n canvas of the Evaluador-CV workflow',
+          caption:
+            'The scoring pipeline. It pulls only the vacancies not yet evaluated for the profile, builds one prompt per vacancy, calls Gemini, parses the structured answer and saves score, reasons and model id back through the API.',
+        },
+        es: {
+          alt: 'Canvas de n8n del flujo Evaluador-CV',
+          caption:
+            'El pipeline de puntuaci\u00f3n. Pide solo las vacantes a\u00fan no evaluadas para el perfil, arma un prompt por vacante, llama a Gemini, parsea la respuesta estructurada y guarda score, razones y modelo de vuelta por la API.',
+        },
+      },
+      {
+        src: '/shots/job-radar-n8n-bot.png',
+        width: 1500,
+        height: 520,
+        en: {
+          alt: 'n8n canvas of the Telegram bot workflow with a six-way switch',
+          caption:
+            'The Telegram bot. A Code node classifies the intent and a Switch routes it \u2014 help, best matches, search, CV upload as PDF, cover-letter draft, fallback \u2014 with every branch converging on a single responder node.',
+        },
+        es: {
+          alt: 'Canvas de n8n del flujo del bot de Telegram con un switch de seis salidas',
+          caption:
+            'El bot de Telegram. Un nodo Code clasifica la intenci\u00f3n y un Switch la enruta \u2014ayuda, mejores coincidencias, b\u00fasqueda, CV en PDF, borrador de carta, fallback\u2014 y todas las ramas convergen en un \u00fanico nodo de respuesta.',
         },
       },
     ],
@@ -204,11 +254,16 @@ export const projects: Project[] = [
           body: 'The scoring pipeline asks the API for vacancies not yet evaluated for this profile, rather than being handed a batch. Combined with a unique constraint on (vacancy, profile) and an upsert on write, the stage can crash, be re-run, or run concurrently without double-billing the model or corrupting scores.',
         },
         {
+          title: 'Design around a host that sleeps',
+          body: 'The API runs on a free tier that stops the service after fifteen minutes idle and answers 503 while it boots, so a long timeout alone was useless. Each scheduled workflow now opens with a wake-up call that is allowed to fail, a sixty-second wait, and retries on every call to the API; a fourth workflow pings the service every ten minutes during the day so the public board opens instantly, sized to stay inside the monthly free hours.',
+        },
+        {
           title: 'Store the reasoning, not just the score',
           body: 'Every evaluation persists the 0–100 score, the list of reasons behind it, and the model identifier that produced it. A bare number is unauditable and unimprovable; keeping the reasons and the model version means a bad prompt can be diagnosed after the fact and results can be compared across model changes.',
         },
       ],
       outcome: [
+        'Running in production with nothing on my machine: API on Render, PostgreSQL on Neon, board on GitHub Pages, workflows on a hosted n8n.',
         'Three sources — Remotive, Arbeitnow and RemoteOK — collected every six hours, merged into one normalized schema.',
         'Duplicate rows made structurally impossible by a unique SHA-256 URL hash.',
         'Telegram notifications fire only for genuinely new vacancies.',
@@ -246,11 +301,16 @@ export const projects: Project[] = [
           body: 'La pipeline de evaluación le pide a la API las vacantes aún no evaluadas para ese perfil, en vez de recibir un lote. Combinado con una restricción de unicidad en (vacante, perfil) y un upsert en la escritura, la etapa puede caerse, reejecutarse o correr en concurrencia sin cobrar dos veces el modelo ni corromper los puntajes.',
         },
         {
+          title: 'Diseñar para un hosting que se duerme',
+          body: 'La API corre en un plan gratuito que apaga el servicio tras quince minutos sin tráfico y responde 503 mientras arranca, así que un timeout largo por sí solo no servía. Cada flujo programado empieza ahora con una llamada de despertar que puede fallar, una espera de sesenta segundos y reintentos en cada llamada a la API; un cuarto flujo hace ping cada diez minutos durante el día para que el tablero público abra al instante, dimensionado para no salirse de las horas gratuitas del mes.',
+        },
+        {
           title: 'Guardar el razonamiento, no solo el puntaje',
           body: 'Cada evaluación persiste el puntaje 0–100, la lista de razones detrás y el identificador del modelo que lo produjo. Un número suelto no es auditable ni mejorable; conservar las razones y la versión del modelo permite diagnosticar un prompt malo después del hecho y comparar resultados entre cambios de modelo.',
         },
       ],
       outcome: [
+        'En producción sin nada en mi máquina: API en Render, PostgreSQL en Neon, tablero en GitHub Pages, flujos en un n8n hospedado.',
         'Tres fuentes —Remotive, Arbeitnow y RemoteOK— recolectadas cada seis horas y unificadas en un esquema normalizado.',
         'Filas duplicadas estructuralmente imposibles gracias al hash SHA-256 único de la URL.',
         'Notificaciones de Telegram solo para vacantes genuinamente nuevas.',

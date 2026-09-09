@@ -109,6 +109,44 @@ const shots = project.shots ?? [];
         </figure>
 
         {
+          shots.length > 1 && (
+            <div class="more-evidence mt-8">
+              <button
+                type="button"
+                data-toggle
+                aria-expanded="false"
+                class="inline-flex items-center gap-2 rounded-lg border border-line-strong px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-accent/50 hover:text-accent"
+              >
+                <span data-chevron aria-hidden="true" class="inline-block transition-transform">▾</span>
+                <span data-label-expand>{project.moreEvidenceLabel?.[lang] ?? t('case.more.expand')}</span>
+                <span data-label-collapse hidden>{t('case.more.collapse')}</span>
+              </button>
+
+              <div data-panel hidden class="mt-6 flex flex-col gap-12">
+                {shots.slice(1).map((shot) => (
+                  <figure>
+                    <div class="overflow-hidden rounded-xl border border-line bg-surface">
+                      <img
+                        src={shot.src}
+                        alt={shot[lang].alt}
+                        width={shot.width}
+                        height={shot.height}
+                        loading="lazy"
+                        decoding="async"
+                        class="w-full"
+                      />
+                    </div>
+                    <figcaption class="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-ink-dim">
+                      {shot[lang].caption}
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+          )
+        }
+
+        {
           project.demo && (
             <div class="live-embed mt-8" data-src={project.demo}>
               <div class="flex flex-wrap items-center gap-3">
@@ -247,6 +285,22 @@ const shots = project.shots ?? [];
 <script>
   // El iframe solo carga la web cuando alguien despliega la vista: no
   // penaliza la carga de la página a quien no la abre.
+  document.querySelectorAll<HTMLElement>('.more-evidence').forEach((root) => {
+    const btn = root.querySelector<HTMLButtonElement>('[data-toggle]')!;
+    const panel = root.querySelector<HTMLElement>('[data-panel]')!;
+    const chevron = root.querySelector<HTMLElement>('[data-chevron]')!;
+    const lblExpand = root.querySelector<HTMLElement>('[data-label-expand]')!;
+    const lblCollapse = root.querySelector<HTMLElement>('[data-label-collapse]')!;
+    btn.addEventListener('click', () => {
+      const open = panel.hidden;
+      panel.hidden = !open;
+      btn.setAttribute('aria-expanded', String(open));
+      chevron.style.transform = open ? 'rotate(180deg)' : '';
+      lblExpand.hidden = open;
+      lblCollapse.hidden = !open;
+    });
+  });
+
   document.querySelectorAll<HTMLElement>('.live-embed').forEach((root) => {
     const src = root.dataset.src!;
     const btn = root.querySelector<HTMLButtonElement>('[data-toggle]')!;
