@@ -21,6 +21,7 @@ export const ui = {
     'hero.cta.contact': 'Get in touch',
     'hero.available': 'Available for engineering roles and freelance work · remote or Ecuador',
 
+    'work.clientEyebrow': 'Client work',
     'work.eyebrow': 'Selected work',
     'work.title': 'Four systems, four hard problems',
     'work.body':
@@ -105,6 +106,7 @@ export const ui = {
     'hero.cta.contact': 'Contactar',
     'hero.available': 'Disponible para roles de ingeniería y trabajo freelance · remoto o Ecuador',
 
+    'work.clientEyebrow': 'Trabajo para clientes',
     'work.eyebrow': 'Proyectos destacados',
     'work.title': 'Cuatro sistemas, cuatro problemas difíciles',
     'work.body':
