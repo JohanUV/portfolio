@@ -27,7 +27,7 @@ export const ui = {
       'Each of these is a real, working system with the source public. Read the case study for the decisions behind it, not just the screenshot.',
     'work.client': 'Built for clients',
     'work.clientBody':
-      'Three Latacunga businesses asked for a site and got one that works. Small in scope, real in consequence: someone is running their bookings and quotes through these.',
+      'Four Ecuadorian businesses asked for a site and got one that works. Small in scope, real in consequence: someone is running their bookings and quotes through these.',
     'work.more': 'Also built',
     'work.readCase': 'Read case study',
     'work.viewCode': 'Source',
@@ -62,7 +62,7 @@ export const ui = {
     'about.eyebrow': 'About',
     'about.title': 'The short version',
     'about.p1':
-      'I am a software engineering student at Universidad de las Fuerzas Armadas ESPE in Latacunga, Ecuador, currently in my fifth semester. I have not held a full-time engineering job yet. What I have instead is ten systems I designed, built and documented end to end — three of them commissioned by businesses here in Latacunga — with the code public.',
+      'I am a software engineering student at Universidad de las Fuerzas Armadas ESPE in Latacunga, Ecuador, currently in my fifth semester. I have not held a full-time engineering job yet. What I have instead is eleven systems I designed, built and documented end to end — four of them commissioned by businesses here in Ecuador — with the code public.',
     'about.p2':
       'The thread running through them is data from sources that resist being read: government portals with no API, job boards with incompatible schemas, court systems behind captchas. I like the part where you have to figure out how something works before you can build on it.',
     'about.p3':
@@ -111,7 +111,7 @@ export const ui = {
       'Cada uno es un sistema real y funcional con el código público. Lee el case study por las decisiones detrás, no solo por la captura de pantalla.',
     'work.client': 'Hecho para clientes',
     'work.clientBody':
-      'Tres negocios de Latacunga pidieron una web y recibieron una que funciona. Alcance pequeño, consecuencia real: hay gente gestionando sus reservas y cotizaciones por aquí.',
+      'Cuatro negocios ecuatorianos pidieron una web y recibieron una que funciona. Alcance pequeño, consecuencia real: hay gente gestionando sus reservas y cotizaciones por aquí.',
     'work.more': 'También construí',
     'work.readCase': 'Leer case study',
     'work.viewCode': 'Código',
@@ -146,7 +146,7 @@ export const ui = {
     'about.eyebrow': 'Sobre mí',
     'about.title': 'La versión corta',
     'about.p1':
-      'Soy estudiante de Ingeniería de Software en la Universidad de las Fuerzas Armadas ESPE, en Latacunga, Ecuador, cursando quinto semestre. Todavía no he tenido un empleo full-time de ingeniería. Lo que tengo en su lugar son diez sistemas que diseñé, construí y documenté de punta a punta —tres de ellos encargados por negocios de Latacunga— con el código público.',
+      'Soy estudiante de Ingeniería de Software en la Universidad de las Fuerzas Armadas ESPE, en Latacunga, Ecuador, cursando quinto semestre. Todavía no he tenido un empleo full-time de ingeniería. Lo que tengo en su lugar son once sistemas que diseñé, construí y documenté de punta a punta —cuatro de ellos encargados por negocios ecuatorianos— con el código público.',
     'about.p2':
       'El hilo que los conecta son datos de fuentes que se resisten a ser leídas: portales estatales sin API, bolsas de empleo con esquemas incompatibles, sistemas judiciales detrás de captchas. Me gusta la parte donde hay que descifrar cómo funciona algo antes de poder construir encima.',
     'about.p3':

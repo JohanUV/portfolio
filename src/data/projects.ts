@@ -1036,6 +1036,131 @@ export const projects: Project[] = [
       ],
     },
   },
+  /* ───────────────────────── JULIUSPITKENNEL ───────────────────────── */
+  {
+    slug: 'juliuspitkennel',
+    featured: false,
+    year: '2026',
+    repo: 'https://github.com/JohanUV/juliuspitkennel',
+    demo: 'https://juliuspitkennel.vercel.app/',
+    stack: ['HTML', 'CSS', 'JavaScript', 'i18n', 'WebP', 'YouTube IFrame API', 'Vercel'],
+    shots: [
+      {
+        src: '/shots/jpk-home.jpg',
+        width: 1512,
+        height: 800,
+        en: {
+          alt: 'JULIUSPITKENNEL home: Ramón Dino, the Brazilian Bully stud, with his weight, breed and Best of Breed badge',
+          caption:
+            'Live on Vercel. The page opens on the stud himself: name, weight, breed and the Best of Breed title from Pichincha Bully Fest 2026, with a three-language switch in the header.',
+        },
+        es: {
+          alt: 'Portada de JULIUSPITKENNEL: Ramón Dino, el macho Brazilian Bully, con su peso, raza y la insignia de Mejor de la Raza',
+          caption:
+            'En vivo en Vercel. La página abre con el macho: nombre, peso, raza y el título de Mejor de la Raza del Pichincha Bully Fest 2026, con selector de tres idiomas en el encabezado.',
+        },
+      },
+      {
+        src: '/shots/jpk-gal.jpg',
+        width: 1512,
+        height: 800,
+        en: {
+          alt: 'JULIUSPITKENNEL gallery: the award photo as a banner and eight uniform tiles labelled by trait',
+          caption:
+            'The gallery labels each photo by what a buyer evaluates — head, bone and chest, topline, show stack — instead of "photo 1, photo 2". The award opens it as a banner.',
+        },
+        es: {
+          alt: 'Galería de JULIUSPITKENNEL: la foto del premio como banner y ocho recuadros uniformes etiquetados por rasgo',
+          caption:
+            'La galería etiqueta cada foto por lo que un comprador evalúa —cabeza, hueso y pecho, línea superior, pose de exposición— en vez de «foto 1, foto 2». El premio la abre como banner.',
+        },
+      },
+    ],
+    moreEvidenceLabel: { en: 'See the gallery', es: 'Ver la galería' },
+    accentTags: ['Client work'],
+    en: {
+      title: 'JULIUSPITKENNEL',
+      kind: 'Bully kennel site · Ecuador',
+      tagline:
+        'A three-language single page for a bully kennel, built to sell one thing: the stud. Photos labelled by conformation trait, silent autoplay videos with a one-tap soundtrack, and a WhatsApp handoff in the visitor’s language.',
+      summary:
+        'The public site of JULIUSPITKENNEL, an Ecuadorian kennel whose stud, Ramón Dino, won Best of Breed at Pichincha Bully Fest 2026. The page presents him the way the market evaluates a stud — weight, head, bone, structure in motion — announces the next litter with a waiting list, and hands every inquiry to the owner’s WhatsApp. Spanish, English and Portuguese, switchable without a reload. Live at juliuspitkennel.vercel.app.',
+      context:
+        'The owner had strong photos on Instagram, a show title and no website. The reference he gave was a US kennel site: dark, dog-first, photos everywhere. Buyers for this breed come from across Latin America and the US, so the brief grew mid-build to three languages. Everything else came from reading how bully kennels actually market: buyers ask about head and bone, want to see the dog move, and want to know how to get on the list.',
+      problem:
+        'A breeder site fails in two familiar ways. It shows random photos with no argument, so the visitor cannot tell what they are looking at. Or it treats video as decoration: muted, small, no way to hear it, while browsers block any sound that was not asked for. Both were in the first draft. The owner also cut a whole section — a planned pairing — because the two dogs were different breeds, and asked for photos he did not want out of every place they appeared.',
+      decisions: [
+        {
+          title: 'Sell the dog, not the kennel',
+          body: 'The hero is the stud: name, weight, breed, sex and the show title as a gold badge. The gallery names each photo by the trait it shows. The video section says it in the copy — photos show type, movement shows structure. The primary button is "Ask about stud service", because that is what a stud is for.',
+        },
+        {
+          title: 'One dictionary, three languages, no reload',
+          body: 'Every text node carries a data-i18n key; a single dictionary holds ES, EN and PT. The switch rewrites the page in place, remembers the choice, honours ?lang= in the URL and falls back to the browser language. The WhatsApp message the visitor sends arrives in the language they were reading.',
+        },
+        {
+          title: 'Music the browser will actually play',
+          body: 'Browsers refuse audio without a gesture, so autoplay-with-sound is not an option. The videos autoplay muted in view; each card has a speaker button that starts its assigned YouTube track through the IFrame API from a chosen second, looping with the video, one at a time, and muting itself when the card scrolls away. Tapping the video opens it full size with the same track.',
+        },
+        {
+          title: 'Cache busting by filename',
+          body: 'Images ship with a one-year cache header. When the owner replaced the logo, the browser kept the old one under the same name. The fix was to rename the asset, not to weaken the cache — the rule that immutable files change name when they change content.',
+        },
+      ],
+      outcome: [
+        'Live at juliuspitkennel.vercel.app, deployed from the public repo on every push, old domain redirected.',
+        'Three languages in one page, no reload, with the WhatsApp message localised.',
+        'Ten photos labelled by trait, two silent videos with one-tap soundtracks, a waiting-list flow for the next litter.',
+        'Logo, Instagram, Facebook and phone number all supplied by the owner; no invented claims on the page.',
+      ],
+      metrics: [
+        { value: '3', label: 'languages, one page' },
+        { value: '1', label: 'tap to hear the soundtrack' },
+        { value: '0', label: 'JS frameworks' },
+      ],
+    },
+    es: {
+      title: 'JULIUSPITKENNEL',
+      kind: 'Sitio para criadero de bullies · Ecuador',
+      tagline:
+        'Una página en tres idiomas para un criadero de bullies, hecha para vender una sola cosa: el macho. Fotos etiquetadas por rasgo de conformación, videos en silencio con música a un toque y entrega a WhatsApp en el idioma del visitante.',
+      summary:
+        'La web pública de JULIUSPITKENNEL, un criadero ecuatoriano cuyo macho, Ramón Dino, ganó Mejor de la Raza en el Pichincha Bully Fest 2026. La página lo presenta como el mercado evalúa a un semental —peso, cabeza, hueso, estructura en movimiento—, anuncia la próxima camada con lista de espera y pasa cada consulta al WhatsApp del dueño. Español, inglés y portugués, sin recargar. En vivo en juliuspitkennel.vercel.app.',
+      context:
+        'El dueño tenía buenas fotos en Instagram, un título de exposición y ninguna web. La referencia que dio fue el sitio de un criadero de Estados Unidos: oscuro, el perro primero, fotos por todas partes. Los compradores de esta raza vienen de toda Latinoamérica y Estados Unidos, así que el encargo creció a mitad de camino a tres idiomas. El resto salió de leer cómo se venden de verdad los criaderos de bully: el comprador pregunta por cabeza y hueso, quiere ver al perro moverse y quiere saber cómo entrar en la lista.',
+      problem:
+        'Una web de criadero falla de dos formas conocidas. Muestra fotos sueltas sin argumento, y el visitante no sabe qué está mirando. O trata el video como adorno: mudo, pequeño, sin forma de oírlo, mientras el navegador bloquea cualquier sonido que nadie pidió. Las dos estaban en el primer borrador. El dueño además eliminó una sección entera —un cruce previsto— porque los dos perros eran de razas distintas, y pidió sacar de todos lados fotos que no quería.',
+      decisions: [
+        {
+          title: 'Vender al perro, no al criadero',
+          body: 'El hero es el macho: nombre, peso, raza, sexo y el título de exposición como insignia dorada. La galería nombra cada foto por el rasgo que muestra. La sección de video lo dice en el texto: las fotos muestran el tipo, el movimiento muestra la estructura. El botón principal es «Consultar monta», porque para eso sirve un semental.',
+        },
+        {
+          title: 'Un diccionario, tres idiomas, sin recargar',
+          body: 'Cada texto lleva una clave data-i18n; un solo diccionario guarda ES, EN y PT. El selector reescribe la página en el sitio, recuerda la elección, respeta ?lang= en la URL y cae al idioma del navegador. El mensaje de WhatsApp que envía el visitante llega en el idioma en que estaba leyendo.',
+        },
+        {
+          title: 'Música que el navegador sí reproduce',
+          body: 'Los navegadores rechazan audio sin un gesto, así que reproducir con sonido en automático no es opción. Los videos arrancan en silencio al entrar en pantalla; cada tarjeta tiene un botón de altavoz que inicia su pista de YouTube por la IFrame API desde un segundo elegido, en bucle con el video, una a la vez, y se silencia sola cuando la tarjeta sale de pantalla. Tocar el video lo abre en grande con la misma pista.',
+        },
+        {
+          title: 'Romper la caché por nombre de archivo',
+          body: 'Las imágenes salen con caché de un año. Cuando el dueño reemplazó el logo, el navegador conservó el viejo bajo el mismo nombre. La solución fue renombrar el archivo, no debilitar la caché: la regla de que un archivo inmutable cambia de nombre cuando cambia de contenido.',
+        },
+      ],
+      outcome: [
+        'En vivo en juliuspitkennel.vercel.app, desplegado desde el repo público en cada push, dominio viejo redirigido.',
+        'Tres idiomas en una página, sin recargar, con el mensaje de WhatsApp localizado.',
+        'Diez fotos etiquetadas por rasgo, dos videos en silencio con música a un toque y un flujo de lista de espera para la próxima camada.',
+        'Logo, Instagram, Facebook y teléfono aportados por el dueño; ninguna afirmación inventada en la página.',
+      ],
+      metrics: [
+        { value: '3', label: 'idiomas, una página' },
+        { value: '1', label: 'toque para oír la música' },
+        { value: '0', label: 'frameworks JS' },
+      ],
+    },
+  },
 ];
 
 export const featuredProjects = projects.filter((p) => p.featured);
