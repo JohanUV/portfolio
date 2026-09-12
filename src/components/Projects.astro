@@ -16,7 +16,7 @@ const t = useTranslations(lang);
   title={t('work.client')}
   body={t('work.clientBody')}
 >
-  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+  <div class="grid gap-5 sm:grid-cols-2">
     {clientProjects.map((project) => <ProjectCardCompact project={project} lang={lang} />)}
   </div>
 
