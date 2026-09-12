@@ -60,10 +60,10 @@ export const heroStats = [
     },
   },
   {
-    value: '9',
+    value: '10',
     label: {
-      en: 'systems shipped end to end, 2 for real clients',
-      es: 'sistemas construidos de punta a punta, 2 para clientes reales',
+      en: 'systems shipped end to end, 3 for real clients',
+      es: 'sistemas construidos de punta a punta, 3 para clientes reales',
     },
   },
   {

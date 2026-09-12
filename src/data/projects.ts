@@ -918,6 +918,108 @@ export const projects: Project[] = [
       ],
     },
   },
+
+  /* ───────────────────────────── MODUFORM ───────────────────────────── */
+  {
+    slug: 'moduform',
+    featured: false,
+    year: '2026',
+    repo: 'https://github.com/JohanUV/moduform',
+    demo: 'https://moduform.vercel.app/',
+    stack: ['HTML', 'CSS', 'JavaScript', 'WebP', 'Vercel'],
+    shots: [
+      {
+        src: '/shots/moduform-home.jpg',
+        width: 1512,
+        height: 800,
+        en: {
+          alt: 'ModuForm home page hero with the black modular kitchen',
+          caption:
+            'Live on Vercel. Every photo and video is a real installed job; the before/after sliders and the WhatsApp buttons below the fold are what the business actually uses to get enquiries.',
+        },
+        es: {
+          alt: 'Portada de ModuForm con la cocina modular en negro',
+          caption:
+            'En vivo en Vercel. Cada foto y video es un trabajo real instalado; los comparadores antes/después y los botones de WhatsApp más abajo son lo que el negocio usa para recibir solicitudes.',
+        },
+      },
+    ],
+    accentTags: ['Client work'],
+    en: {
+      title: 'ModuForm',
+      kind: 'Custom furniture maker site · Latacunga, Ecuador',
+      tagline:
+        'The website of a one-person modular furniture workshop — a dark, photo-first single page where every enquiry lands directly in the owner’s WhatsApp.',
+      summary:
+        'The public site of ModuForm, a Latacunga workshop that measures, builds and installs melamine furniture: kitchens, bathroom vanities, desks, TV walls and LED-lit decorative panels. One page with twelve real job photos, five short walkthrough videos, three drag-to-compare before/after views and a WhatsApp flow that opens a chat with a prefilled message. Live at moduform.vercel.app.',
+      context:
+        'The owner had a phone full of job photos and videos and no web presence; every lead came by word of mouth. The brief was strict: use only real work, invent no testimonials or numbers, and make it load fast on the cheap Android phones most clients in Latacunga browse on.',
+      problem:
+        'The raw material was phone photos in mixed orientations and 20–40 MB videos. Shown as-is, the page would weigh over 200 MB and the videos would never play on mobile data. A form was also the wrong contact channel: the owner answers on WhatsApp and nowhere else.',
+      decisions: [
+        {
+          title: 'No framework, aggressive media pipeline',
+          body: 'Plain HTML, CSS and JavaScript on Vercel. Every photo ships as WebP with a JPEG fallback at two sizes; videos are re-encoded to 720p H.264 at 1–2 MB each, load only when scrolled into view, autoplay muted and pause when they leave the viewport. The full page is under 1 MB before any video plays.',
+        },
+        {
+          title: 'WhatsApp deep links instead of a form',
+          body: 'There is no backend. Every call to action is a wa.me link with a prefilled message, generated from one constant so the number is changed in one place. The visitor ends up in the owner’s chat, which is the only channel he actually answers.',
+        },
+        {
+          title: 'Before/after slider built on a native range input',
+          body: 'The comparison uses clip-path driven by a full-size <input type="range">, so dragging works with mouse, touch and keyboard without a library, and screen readers get a real control. A short automatic nudge on first view teaches the gesture.',
+        },
+      ],
+      outcome: [
+        'Live in production at moduform.vercel.app, deployed from the public repo on every push.',
+        'Twelve real photos, five walkthrough videos and three before/after comparisons, with an accessible lightbox and category filters.',
+        'Single-page load under 1 MB before video; videos stream on demand at 1–2 MB each.',
+        'Every button opens WhatsApp with a prefilled message; no server, no form, no data stored.',
+      ],
+      metrics: [
+        { value: '12', label: 'real job photos' },
+        { value: '5', label: 'walkthrough videos' },
+        { value: '0', label: 'JS frameworks' },
+      ],
+    },
+    es: {
+      title: 'ModuForm',
+      kind: 'Sitio para taller de muebles a medida · Latacunga, Ecuador',
+      tagline:
+        'La web de un taller unipersonal de muebles modulares — una sola página oscura, centrada en las fotos, donde cada solicitud cae directo en el WhatsApp del dueño.',
+      summary:
+        'La web pública de ModuForm, un taller de Latacunga que mide, fabrica e instala muebles en melamina: cocinas, muebles de baño, escritorios, paredes de TV y paneles decorativos con LED. Una página con doce fotos reales de trabajos, cinco videos cortos de recorrido, tres comparadores antes/después arrastrables y un flujo de WhatsApp que abre el chat con el mensaje ya escrito. En vivo en moduform.vercel.app.',
+      context:
+        'El dueño tenía el celular lleno de fotos y videos de trabajos y ninguna presencia web; todos los clientes llegaban de boca en boca. El encargo fue estricto: usar solo trabajo real, no inventar testimonios ni cifras, y que cargue rápido en los Android baratos con los que navega la mayoría de clientes en Latacunga.',
+      problem:
+        'El material crudo eran fotos de celular en orientaciones mezcladas y videos de 20 a 40 MB. Tal cual, la página pesaría más de 200 MB y los videos nunca reproducirían con datos móviles. Un formulario también era el canal equivocado: el dueño responde por WhatsApp y por ningún otro lado.',
+      decisions: [
+        {
+          title: 'Sin framework, con un pipeline de medios agresivo',
+          body: 'HTML, CSS y JavaScript planos en Vercel. Cada foto va en WebP con respaldo JPEG en dos tamaños; los videos se recodificaron a 720p H.264 de 1 a 2 MB cada uno, se cargan solo al entrar en pantalla, se reproducen en silencio y se pausan al salir. La página completa pesa menos de 1 MB antes de que corra ningún video.',
+        },
+        {
+          title: 'Enlaces directos a WhatsApp en vez de formulario',
+          body: 'No hay backend. Cada llamada a la acción es un enlace wa.me con mensaje prellenado, generado desde una sola constante para cambiar el número en un solo lugar. El visitante termina en el chat del dueño, que es el único canal que de verdad atiende.',
+        },
+        {
+          title: 'Comparador antes/después sobre un input range nativo',
+          body: 'La comparación usa clip-path controlado por un <input type="range"> a pantalla completa, así que arrastrar funciona con mouse, táctil y teclado sin librería, y los lectores de pantalla reciben un control real. Un pequeño movimiento automático al aparecer enseña el gesto.',
+        },
+      ],
+      outcome: [
+        'En producción en moduform.vercel.app, desplegado desde el repo público en cada push.',
+        'Doce fotos reales, cinco videos de recorrido y tres comparadores antes/después, con visor accesible y filtros por categoría.',
+        'Carga de la página bajo 1 MB antes del video; los videos se transmiten bajo demanda a 1–2 MB cada uno.',
+        'Cada botón abre WhatsApp con el mensaje ya escrito; sin servidor, sin formulario, sin datos guardados.',
+      ],
+      metrics: [
+        { value: '12', label: 'fotos reales de trabajos' },
+        { value: '5', label: 'videos de recorrido' },
+        { value: '0', label: 'frameworks JS' },
+      ],
+    },
+  },
 ];
 
 export const featuredProjects = projects.filter((p) => p.featured);

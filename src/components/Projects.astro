@@ -28,7 +28,7 @@ const t = useTranslations(lang);
     <h3 class="display-sm text-2xl text-ink">{t('work.client')}</h3>
     <p class="mt-3 max-w-xl text-sm leading-relaxed text-ink-muted">{t('work.clientBody')}</p>
 
-    <div class="mt-7 grid gap-4 sm:grid-cols-2">
+    <div class="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {clientProjects.map((project) => <ProjectCardCompact project={project} lang={lang} />)}
     </div>
   </div>
