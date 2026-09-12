@@ -926,59 +926,75 @@ export const projects: Project[] = [
     year: '2026',
     repo: 'https://github.com/JohanUV/moduform',
     demo: 'https://moduform.vercel.app/',
-    stack: ['HTML', 'CSS', 'JavaScript', 'WebP', 'Vercel'],
+    stack: ['HTML', 'CSS', 'JavaScript', 'WebP', 'Vercel', 'Vercel Analytics'],
     shots: [
       {
         src: '/shots/moduform-home.jpg',
         width: 1512,
         height: 800,
         en: {
-          alt: 'ModuForm home page hero with the black modular kitchen',
+          alt: 'ModuForm home page: headline, a real installed TV unit and the catalog of furniture categories',
           caption:
-            'Live on Vercel. Every photo and video is a real installed job; the before/after sliders and the WhatsApp buttons below the fold are what the business actually uses to get enquiries.',
+            'Live on Vercel. The page reads like a catalog: what the workshop makes, what each category includes, and one button per category that pre-fills the quote wizard.',
         },
         es: {
-          alt: 'Portada de ModuForm con la cocina modular en negro',
+          alt: 'Portada de ModuForm: titular, un mueble de TV real instalado y el catálogo de categorías',
           caption:
-            'En vivo en Vercel. Cada foto y video es un trabajo real instalado; los comparadores antes/después y los botones de WhatsApp más abajo son lo que el negocio usa para recibir solicitudes.',
+            'En vivo en Vercel. La página se lee como un catálogo: qué fabrica el taller, qué incluye cada categoría y un botón por categoría que preselecciona el cotizador.',
+        },
+      },
+      {
+        src: '/shots/moduform-cotizador.jpg',
+        width: 1512,
+        height: 800,
+        en: {
+          alt: 'ModuForm three-step quote wizard, step one: choose the furniture type',
+          caption:
+            'The three-step quote wizard. Furniture type, then space and measurements, then finish, budget range and timing. Only after the summary does it hand the visitor to WhatsApp with a structured message.',
+        },
+        es: {
+          alt: 'Cotizador de tres pasos de ModuForm, paso uno: elegir el tipo de mueble',
+          caption:
+            'El cotizador de tres pasos. Tipo de mueble, luego espacio y medidas, luego acabado, rango de presupuesto y plazo. Solo después del resumen pasa al visitante a WhatsApp con un mensaje estructurado.',
         },
       },
     ],
+    moreEvidenceLabel: { en: 'See the quote wizard', es: 'Ver el cotizador' },
     accentTags: ['Client work'],
     en: {
       title: 'ModuForm',
       kind: 'Custom furniture maker site · Latacunga, Ecuador',
       tagline:
-        'The website of a one-person modular furniture workshop — a dark, photo-first single page where every enquiry lands directly in the owner’s WhatsApp.',
+        'The website of a one-person modular furniture workshop — a catalog-style single page whose three-step quote wizard qualifies each lead before handing it to the owner’s WhatsApp.',
       summary:
-        'The public site of ModuForm, a Latacunga workshop that measures, builds and installs melamine furniture: kitchens, bathroom vanities, desks, TV walls and LED-lit decorative panels. One page with twelve real job photos, five short walkthrough videos, three drag-to-compare before/after views and a WhatsApp flow that opens a chat with a prefilled message. Live at moduform.vercel.app.',
+        'The public site of ModuForm, a Latacunga workshop that measures, builds and installs melamine furniture: kitchens, bathroom vanities, desks, TV walls and LED-lit decorative panels. A catalog by category, a three-step quote wizard, and a separate projects section with twelve real photos, five walkthrough videos and three before/after comparisons. Live at moduform.vercel.app.',
       context:
-        'The owner had a phone full of job photos and videos and no web presence; every lead came by word of mouth. The brief was strict: use only real work, invent no testimonials or numbers, and make it load fast on the cheap Android phones most clients in Latacunga browse on.',
+        'The owner had a phone full of job photos and no web presence; every lead came by word of mouth as an unstructured “hola, quiero cotizar”. The brief was strict: real work only, no invented testimonials or numbers, and it had to load fast on the phones most clients in Latacunga browse on.',
       problem:
-        'The raw material was phone photos in mixed orientations and 20–40 MB videos. Shown as-is, the page would weigh over 200 MB and the videos would never play on mobile data. A form was also the wrong contact channel: the owner answers on WhatsApp and nowhere else.',
+        'The first version was a dark, animated portfolio that sent visitors to WhatsApp on the first click. The owner’s feedback was blunt: it looked like a design showcase, not a place to buy furniture, and he still received messages with no idea of what the person wanted. A site should behave like a salesperson — ask before it hands over.',
       decisions: [
         {
-          title: 'No framework, aggressive media pipeline',
-          body: 'Plain HTML, CSS and JavaScript on Vercel. Every photo ships as WebP with a JPEG fallback at two sizes; videos are re-encoded to 720p H.264 at 1–2 MB each, load only when scrolled into view, autoplay muted and pause when they leave the viewport. The full page is under 1 MB before any video plays.',
+          title: 'Catalog first, then a wizard that qualifies the lead',
+          body: 'The page opens with the furniture categories and what each includes. Every category button pre-selects the quote wizard, which asks for the space, approximate measurements, whether a photo exists, the preferred finish, a budget range and timing. The visitor sees a summary and only then a single WhatsApp button that carries all of it as a structured message.',
         },
         {
-          title: 'WhatsApp deep links instead of a form',
-          body: 'There is no backend. Every call to action is a wa.me link with a prefilled message, generated from one constant so the number is changed in one place. The visitor ends up in the owner’s chat, which is the only channel he actually answers.',
+          title: 'No backend, no framework, aggressive media pipeline',
+          body: 'Plain HTML, CSS and JavaScript on Vercel. Photos ship as WebP with JPEG fallback at two sizes; videos are re-encoded to 720p H.264 at 1–2 MB, load only in view, autoplay muted and keep native controls. The page is under 1 MB before any video plays. Vercel Analytics records each wizard step and every WhatsApp click.',
         },
         {
-          title: 'Before/after slider built on a native range input',
-          body: 'The comparison uses clip-path driven by a full-size <input type="range">, so dragging works with mouse, touch and keyboard without a library, and screen readers get a real control. A short automatic nudge on first view teaches the gesture.',
+          title: 'Before/after built on a native range input',
+          body: 'The comparison uses clip-path driven by a full-size <input type="range">, so dragging works with mouse, touch and keyboard without a library, and screen readers get a real control. Each one states what was there before and what was installed.',
         },
       ],
       outcome: [
         'Live in production at moduform.vercel.app, deployed from the public repo on every push.',
-        'Twelve real photos, five walkthrough videos and three before/after comparisons, with an accessible lightbox and category filters.',
-        'Single-page load under 1 MB before video; videos stream on demand at 1–2 MB each.',
-        'Every button opens WhatsApp with a prefilled message; no server, no form, no data stored.',
+        'Six catalog categories, a three-step quote wizard and a structured WhatsApp handoff instead of a cold link.',
+        'Twelve real photos, five walkthrough videos and three before/after comparisons in a separate projects section.',
+        'Under 1 MB before video; analytics on wizard steps and WhatsApp clicks.',
       ],
       metrics: [
+        { value: '3', label: 'steps before WhatsApp' },
         { value: '12', label: 'real job photos' },
-        { value: '5', label: 'walkthrough videos' },
         { value: '0', label: 'JS frameworks' },
       ],
     },
@@ -986,36 +1002,36 @@ export const projects: Project[] = [
       title: 'ModuForm',
       kind: 'Sitio para taller de muebles a medida · Latacunga, Ecuador',
       tagline:
-        'La web de un taller unipersonal de muebles modulares — una sola página oscura, centrada en las fotos, donde cada solicitud cae directo en el WhatsApp del dueño.',
+        'La web de un taller unipersonal de muebles modulares — una página tipo catálogo cuyo cotizador de tres pasos califica cada solicitud antes de pasarla al WhatsApp del dueño.',
       summary:
-        'La web pública de ModuForm, un taller de Latacunga que mide, fabrica e instala muebles en melamina: cocinas, muebles de baño, escritorios, paredes de TV y paneles decorativos con LED. Una página con doce fotos reales de trabajos, cinco videos cortos de recorrido, tres comparadores antes/después arrastrables y un flujo de WhatsApp que abre el chat con el mensaje ya escrito. En vivo en moduform.vercel.app.',
+        'La web pública de ModuForm, un taller de Latacunga que mide, fabrica e instala muebles en melamina: cocinas, muebles de baño, escritorios, paredes de TV y paneles decorativos con LED. Un catálogo por categoría, un cotizador de tres pasos y una sección de proyectos aparte con doce fotos reales, cinco videos de recorrido y tres comparaciones antes/después. En vivo en moduform.vercel.app.',
       context:
-        'El dueño tenía el celular lleno de fotos y videos de trabajos y ninguna presencia web; todos los clientes llegaban de boca en boca. El encargo fue estricto: usar solo trabajo real, no inventar testimonios ni cifras, y que cargue rápido en los Android baratos con los que navega la mayoría de clientes en Latacunga.',
+        'El dueño tenía el celular lleno de fotos de trabajos y ninguna presencia web; cada cliente llegaba de boca en boca con un “hola, quiero cotizar” sin más datos. El encargo fue estricto: solo trabajo real, sin testimonios ni cifras inventadas, y que cargue rápido en los celulares con los que navega la mayoría de clientes en Latacunga.',
       problem:
-        'El material crudo eran fotos de celular en orientaciones mezcladas y videos de 20 a 40 MB. Tal cual, la página pesaría más de 200 MB y los videos nunca reproducirían con datos móviles. Un formulario también era el canal equivocado: el dueño responde por WhatsApp y por ningún otro lado.',
+        'La primera versión fue un portafolio oscuro y animado que mandaba al visitante a WhatsApp al primer clic. La crítica del dueño fue directa: parecía una vitrina de diseño, no un lugar para comprar muebles, y seguía recibiendo mensajes sin idea de qué quería la persona. Una web debe comportarse como un vendedor: preguntar antes de entregar.',
       decisions: [
         {
-          title: 'Sin framework, con un pipeline de medios agresivo',
-          body: 'HTML, CSS y JavaScript planos en Vercel. Cada foto va en WebP con respaldo JPEG en dos tamaños; los videos se recodificaron a 720p H.264 de 1 a 2 MB cada uno, se cargan solo al entrar en pantalla, se reproducen en silencio y se pausan al salir. La página completa pesa menos de 1 MB antes de que corra ningún video.',
+          title: 'Primero el catálogo, luego un cotizador que califica',
+          body: 'La página abre con las categorías de muebles y qué incluye cada una. Cada botón de categoría preselecciona el cotizador, que pregunta el lugar, las medidas aproximadas, si hay foto, el acabado preferido, un rango de presupuesto y el plazo. El visitante ve un resumen y solo entonces un único botón de WhatsApp que lleva todo eso como mensaje estructurado.',
         },
         {
-          title: 'Enlaces directos a WhatsApp en vez de formulario',
-          body: 'No hay backend. Cada llamada a la acción es un enlace wa.me con mensaje prellenado, generado desde una sola constante para cambiar el número en un solo lugar. El visitante termina en el chat del dueño, que es el único canal que de verdad atiende.',
+          title: 'Sin backend, sin framework, con un pipeline de medios agresivo',
+          body: 'HTML, CSS y JavaScript planos en Vercel. Las fotos van en WebP con respaldo JPEG en dos tamaños; los videos se recodificaron a 720p H.264 de 1 a 2 MB, cargan solo al entrar en pantalla, se reproducen en silencio y conservan los controles nativos. La página pesa menos de 1 MB antes de cualquier video. Vercel Analytics registra cada paso del cotizador y cada clic a WhatsApp.',
         },
         {
-          title: 'Comparador antes/después sobre un input range nativo',
-          body: 'La comparación usa clip-path controlado por un <input type="range"> a pantalla completa, así que arrastrar funciona con mouse, táctil y teclado sin librería, y los lectores de pantalla reciben un control real. Un pequeño movimiento automático al aparecer enseña el gesto.',
+          title: 'Antes/después sobre un input range nativo',
+          body: 'La comparación usa clip-path controlado por un <input type="range"> a pantalla completa, así que arrastrar funciona con mouse, táctil y teclado sin librería, y los lectores de pantalla reciben un control real. Cada una explica qué había antes y qué se instaló.',
         },
       ],
       outcome: [
         'En producción en moduform.vercel.app, desplegado desde el repo público en cada push.',
-        'Doce fotos reales, cinco videos de recorrido y tres comparadores antes/después, con visor accesible y filtros por categoría.',
-        'Carga de la página bajo 1 MB antes del video; los videos se transmiten bajo demanda a 1–2 MB cada uno.',
-        'Cada botón abre WhatsApp con el mensaje ya escrito; sin servidor, sin formulario, sin datos guardados.',
+        'Seis categorías de catálogo, un cotizador de tres pasos y una entrega estructurada a WhatsApp en vez de un enlace en frío.',
+        'Doce fotos reales, cinco videos de recorrido y tres comparaciones antes/después en una sección de proyectos aparte.',
+        'Menos de 1 MB antes del video; analítica de pasos del cotizador y clics a WhatsApp.',
       ],
       metrics: [
+        { value: '3', label: 'pasos antes de WhatsApp' },
         { value: '12', label: 'fotos reales de trabajos' },
-        { value: '5', label: 'videos de recorrido' },
         { value: '0', label: 'frameworks JS' },
       ],
     },
