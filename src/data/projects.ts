@@ -742,6 +742,131 @@ export const projects: Project[] = [
   },
 
   /* ───────────────────────────  COTTULLARI  ─────────────────────────── */
+  /* ───────────────────────────── NOXIS ───────────────────────────── */
+  {
+    slug: 'noxis',
+    featured: false,
+    year: '2026',
+    repo: 'https://github.com/JohanUV/noxis-web',
+    demo: 'https://noxisec.netlify.app/',
+    stack: ['HTML', 'CSS', 'JavaScript', 'Canvas', 'Netlify'],
+    shots: [
+      {
+        src: '/shots/noxis-home.jpg',
+        width: 1512,
+        height: 800,
+        en: {
+          alt: 'Noxis home page: rotating headline over a molecular network and a four-question quiz card',
+          caption:
+            'Live on Netlify. The headline rotates through the subjects, the background is a canvas molecular network that bonds to the cursor, and the hero card is a four-question timed quiz that ends by naming the visitor’s weakest subject and pre-filling the contact form with it.',
+        },
+        es: {
+          alt: 'Portada de Noxis: titular rotatorio sobre una red molecular y una tarjeta de simulacro de cuatro preguntas',
+          caption:
+            'En vivo en Netlify. El titular rota entre las materias, el fondo es una red molecular en canvas que se enlaza al cursor, y la tarjeta de la portada es un simulacro cronometrado de cuatro preguntas que termina nombrando la materia más floja del visitante y preseleccionándola en el formulario.',
+        },
+      },
+      {
+        src: '/shots/noxis-labs.jpg',
+        width: 1512,
+        height: 800,
+        en: {
+          alt: 'Noxis interactive lab: a galvanic cell with two selectable metals, an animated voltmeter and a console with the half-reactions',
+          caption:
+            'One of six interactive labs, one per subject. Sliders on the left, a live canvas drawing in the middle, and a console on the right with the worked calculation. Here: a galvanic cell where the visitor picks two metals and watches electrons flow from anode to cathode while E° is computed from standard potentials.',
+        },
+        es: {
+          alt: 'Laboratorio interactivo de Noxis: una pila galvánica con dos metales elegibles, un voltímetro animado y una consola con las semirreacciones',
+          caption:
+            'Uno de seis laboratorios interactivos, uno por materia. Controles a la izquierda, un dibujo en canvas en vivo al centro y una consola a la derecha con el cálculo desarrollado. Aquí: una pila galvánica donde el visitante elige dos metales y ve los electrones ir del ánodo al cátodo mientras se calcula E° a partir de los potenciales estándar.',
+        },
+      },
+    ],
+    moreEvidenceLabel: { en: 'See the interactive labs', es: 'Ver los laboratorios interactivos' },
+    accentTags: ['Client work'],
+    en: {
+      title: 'Noxis',
+      kind: 'Tutoring academy site · Latacunga, Ecuador',
+      tagline:
+        'The website of a science tutoring team led by a university chemistry lecturer — a single page whose interactive labs and timed quiz let a prospective student try the teaching before booking a diagnostic session on WhatsApp.',
+      summary:
+        'The public site of Noxis Formación Académica, a group of university lecturers in Latacunga who tutor chemistry, biology, physics and math for military-academy and university entrance exams, first-year leveling and guided coursework. A periodic-table catalog of subjects, six interactive canvas labs, a four-question timed quiz, a coverage map for online classes, and a contact form that opens WhatsApp with a structured message. Live at noxisec.netlify.app, deployed from GitHub on every push.',
+      context:
+        'The client teaches chemistry at ESPE and tutors privately with colleagues who cover physics and math. He had seen a competitor’s page and liked exactly one thing: worked, interactive examples. The brief that followed was research-first — look at how Ecuadorian pre-university academies sell, what conversion research says about tutoring sites, then build something that shows the teaching instead of describing it.',
+      problem:
+        'Tutoring sites in Ecuador all look the same: a motivational headline, a WhatsApp button and a list of universities. Parents visit several before choosing and decide on evidence, not adjectives. The site had to give a visitor something to do in the first ten seconds, make the subjects feel like a system rather than a list, and route every interaction toward one booking action without a backend.',
+      decisions: [
+        {
+          title: 'Show the teaching: six labs and a quiz, all in vanilla canvas',
+          body: 'Each subject gets a lab with sliders, a live drawing and a console with the worked calculation: a galvanic cell with selectable metals, a Punnett square for eye colour drawn as actual eyes, projectile motion, a quadratic with its discriminant, the secant-to-tangent limit, and a 2×2 matrix deforming the unit square. No charting library and no Python runtime — everything renders instantly on the phones most students use. Labels are painted last inside pill backgrounds so they never sit behind the drawing.',
+        },
+        {
+          title: 'The periodic table as the information architecture',
+          body: 'Subjects are cells with a symbol, a level and a family colour, and that colour follows the subject everywhere: the quiz chip, the lab tab, the sliders, the call-to-action. Section markers are also cells. It is the one detail only a chemist’s academy would have, and it carries the brand instead of decorating it.',
+        },
+        {
+          title: 'One action, prepared by the page',
+          body: 'Every path ends at the same diagnostic-session request. The quiz pre-selects the visitor’s weakest subject, each lab’s button pre-selects its subject, and the five-field form composes a WhatsApp message with profile, subject, modality and deadline. A segmented progress bar in the header fills per section so a long page still reads as a route.',
+        },
+        {
+          title: 'Motion that survives iOS and reduced-motion settings',
+          body: 'The intro, the headline rotation, the scroll reveals and the coverage map are all driven by requestAnimationFrame or CSS, after SMIL animations turned out to fail silently on iPhone. Every animation checks prefers-reduced-motion and degrades to a static, still-readable state. A hand-rolled 390 px iframe harness was used to verify the labs on narrow screens before each deploy.',
+        },
+      ],
+      outcome: [
+        'Live at noxisec.netlify.app, built from the public repo on every push, with a research document and a client questionnaire committed alongside the code.',
+        'Six interactive labs, a timed quiz, a subject catalog, a coverage map and a segmented section progress bar in a single dependency-free HTML file.',
+        'Every call to action lands on one WhatsApp request with the subject already chosen.',
+        'Rebranded mid-project from the original proposal to the client’s chosen name and logo without touching the structure.',
+      ],
+      metrics: [
+        { value: '6', label: 'interactive labs, one per subject' },
+        { value: '1', label: 'HTML file, zero dependencies' },
+        { value: '0', label: 'charting libraries' },
+      ],
+    },
+    es: {
+      title: 'Noxis',
+      kind: 'Sitio para academia de clases particulares · Latacunga, Ecuador',
+      tagline:
+        'La web de un equipo de clases particulares de ciencias liderado por un docente universitario de química — una sola página cuyos laboratorios interactivos y simulacro cronometrado dejan probar la enseñanza antes de agendar un diagnóstico por WhatsApp.',
+      summary:
+        'La web pública de Noxis Formación Académica, un grupo de docentes universitarios de Latacunga que dan clases de química, biología, física y matemática para exámenes de ingreso a escuelas militares y universidades, nivelación de primer año y tareas dirigidas. Un catálogo de materias como tabla periódica, seis laboratorios interactivos en canvas, un simulacro cronometrado de cuatro preguntas, un mapa de cobertura para clases en línea y un formulario que abre WhatsApp con un mensaje estructurado. En vivo en noxisec.netlify.app, desplegado desde GitHub en cada push.',
+      context:
+        'El cliente enseña química en la ESPE y da clases particulares con colegas que cubren física y matemática. Había visto la página de un competidor y le gustaba exactamente una cosa: los ejemplos resueltos e interactivos. El encargo fue investigar primero — cómo venden las academias preuniversitarias ecuatorianas, qué dice la investigación de conversión sobre sitios de tutoría — y luego construir algo que muestre la enseñanza en vez de describirla.',
+      problem:
+        'Las webs de clases particulares en Ecuador se parecen todas: un titular motivacional, un botón de WhatsApp y una lista de universidades. Los padres visitan varias antes de elegir y deciden por evidencia, no por adjetivos. La página tenía que darle al visitante algo que hacer en los primeros diez segundos, hacer que las materias se sientan como un sistema y no como una lista, y llevar cada interacción hacia una única acción de contacto sin backend.',
+      decisions: [
+        {
+          title: 'Mostrar la enseñanza: seis laboratorios y un simulacro, todo en canvas puro',
+          body: 'Cada materia tiene un laboratorio con controles, un dibujo en vivo y una consola con el cálculo desarrollado: una pila galvánica con metales elegibles, un cuadro de Punnett de color de ojos dibujado con ojos reales, tiro parabólico, una cuadrática con su discriminante, el límite de la secante a la tangente y una matriz 2×2 que deforma el cuadrado unitario. Sin librería de gráficas ni runtime de Python: todo se dibuja al instante en los celulares que usa la mayoría de estudiantes. Las etiquetas se pintan al final dentro de píldoras para que nunca queden detrás del dibujo.',
+        },
+        {
+          title: 'La tabla periódica como arquitectura de información',
+          body: 'Las materias son celdas con símbolo, nivel y color de familia, y ese color sigue a la materia en todas partes: el chip del simulacro, la pestaña del laboratorio, los controles, el botón de acción. Los marcadores de sección también son celdas. Es el detalle que solo tendría la academia de un químico, y sostiene la marca en vez de decorarla.',
+        },
+        {
+          title: 'Una sola acción, preparada por la página',
+          body: 'Todos los caminos terminan en la misma solicitud de diagnóstico. El simulacro preselecciona la materia más floja del visitante, el botón de cada laboratorio preselecciona su materia, y el formulario de cinco campos compone un mensaje de WhatsApp con perfil, materia, modalidad y fecha límite. Una barra de progreso segmentada en la cabecera se llena por sección, así una página larga se sigue leyendo como un recorrido.',
+        },
+        {
+          title: 'Movimiento que sobrevive a iOS y a la preferencia de movimiento reducido',
+          body: 'La intro, la rotación del titular, las apariciones al hacer scroll y el mapa de cobertura se mueven con requestAnimationFrame o CSS, después de que las animaciones SMIL fallaran en silencio en iPhone. Cada animación consulta prefers-reduced-motion y degrada a un estado fijo que sigue siendo legible. Un arnés casero con un iframe de 390 px sirvió para verificar los laboratorios en pantallas angostas antes de cada despliegue.',
+        },
+      ],
+      outcome: [
+        'En vivo en noxisec.netlify.app, construido desde el repo público en cada push, con un documento de investigación y un cuestionario para el cliente versionados junto al código.',
+        'Seis laboratorios interactivos, un simulacro cronometrado, un catálogo de materias, un mapa de cobertura y una barra de progreso por secciones en un solo archivo HTML sin dependencias.',
+        'Cada llamado a la acción aterriza en una única solicitud de WhatsApp con la materia ya elegida.',
+        'Cambio de marca a mitad de proyecto, de la propuesta original al nombre y logo elegidos por el cliente, sin tocar la estructura.',
+      ],
+      metrics: [
+        { value: '6', label: 'laboratorios interactivos, uno por materia' },
+        { value: '1', label: 'archivo HTML, cero dependencias' },
+        { value: '0', label: 'librerías de gráficas' },
+      ],
+    },
+  },
   {
     slug: 'cottullari',
     featured: false,
