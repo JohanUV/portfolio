@@ -745,7 +745,7 @@ export const projects: Project[] = [
   /* ─────────────────────────────  CODUV  ───────────────────────────── */
   {
     slug: 'coduv',
-    featured: true,
+    featured: false,
     year: '2026',
     repo: 'https://github.com/JohanUV/coduv',
     demo: 'https://coduv.vercel.app/',
@@ -767,7 +767,7 @@ export const projects: Project[] = [
         },
       },
     ],
-    accentTags: ['Own brand', 'Conversion'],
+    accentTags: ['Client work'],
     en: {
       title: 'CODUV',
       kind: 'Studio site \u00b7 own brand',
