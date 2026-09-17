@@ -63,7 +63,7 @@ export const ui = {
     'about.eyebrow': 'About',
     'about.title': 'The short version',
     'about.p1':
-      'I am a software engineering student at Universidad de las Fuerzas Armadas ESPE in Latacunga, Ecuador, currently in my fifth semester. I have not held a full-time engineering job yet. What I have instead is eleven systems I designed, built and documented end to end — four of them commissioned by businesses here in Ecuador — with the code public.',
+      'I am a software engineering student at Universidad de las Fuerzas Armadas ESPE in Latacunga, Ecuador, currently in my fifth semester. I have not held a full-time engineering job yet. What I have instead is thirteen systems I designed, built and documented end to end — five of them commissioned by businesses here in Ecuador — with the code public.',
     'about.p2':
       'The thread running through them is data from sources that resist being read: government portals with no API, job boards with incompatible schemas, court systems behind captchas. I like the part where you have to figure out how something works before you can build on it.',
     'about.p3':
@@ -148,7 +148,7 @@ export const ui = {
     'about.eyebrow': 'Sobre mí',
     'about.title': 'La versión corta',
     'about.p1':
-      'Soy estudiante de Ingeniería de Software en la Universidad de las Fuerzas Armadas ESPE, en Latacunga, Ecuador, cursando quinto semestre. Todavía no he tenido un empleo full-time de ingeniería. Lo que tengo en su lugar son once sistemas que diseñé, construí y documenté de punta a punta —cuatro de ellos encargados por negocios ecuatorianos— con el código público.',
+      'Soy estudiante de Ingeniería de Software en la Universidad de las Fuerzas Armadas ESPE, en Latacunga, Ecuador, cursando quinto semestre. Todavía no he tenido un empleo full-time de ingeniería. Lo que tengo en su lugar son trece sistemas que diseñé, construí y documenté de punta a punta —cinco de ellos encargados por negocios ecuatorianos— con el código público.',
     'about.p2':
       'El hilo que los conecta son datos de fuentes que se resisten a ser leídas: portales estatales sin API, bolsas de empleo con esquemas incompatibles, sistemas judiciales detrás de captchas. Me gusta la parte donde hay que descifrar cómo funciona algo antes de poder construir encima.',
     'about.p3':
