@@ -742,6 +742,116 @@ export const projects: Project[] = [
   },
 
   /* ───────────────────────────  COTTULLARI  ─────────────────────────── */
+  /* ─────────────────────────────  CODUV  ───────────────────────────── */
+  {
+    slug: 'coduv',
+    featured: true,
+    year: '2026',
+    repo: 'https://github.com/JohanUV/coduv',
+    demo: 'https://coduv.vercel.app/',
+    stack: ['HTML', 'CSS', 'JavaScript', 'i18n', 'Canvas', 'WebP', 'Vercel'],
+    shots: [
+      {
+        src: '/shots/coduv-home.jpg',
+        width: 1456,
+        height: 837,
+        en: {
+          alt: 'CODUV home page with the animated headline and the live automation panel',
+          caption:
+            'The studio\u2019s own site: a headline that cycles through outcomes, a network drawn live on canvas, and an automation that runs itself beside it.',
+        },
+        es: {
+          alt: 'Portada de CODUV con el titular animado y el panel de automatizaci\u00f3n en vivo',
+          caption:
+            'El sitio del propio estudio: un titular que rota entre resultados, una red dibujada en vivo sobre canvas y una automatizaci\u00f3n que corre sola al lado.',
+        },
+      },
+    ],
+    accentTags: ['Own brand', 'Conversion'],
+    en: {
+      title: 'CODUV',
+      kind: 'Studio site \u00b7 own brand',
+      tagline:
+        'The studio\u2019s own site, built the way its clients are sold to: portfolio first, one action, and a calculator that turns wasted hours into a number.',
+      summary:
+        'Public site for CODUV, the brand under which these client projects ship. Two pages, Spanish and English, no framework. The home page leads with the five live client sites, then services with animated diagrams, a four-step process, a calculator that estimates what repetitive work costs per month, written guarantees and a WhatsApp assistant that qualifies the enquiry in three questions.',
+      context:
+        'A new studio has no reviews and no brand recognition, so the site has to substitute evidence for reputation: work that can be opened, a process with dates, and a person with a name and a face.',
+      problem:
+        'The first draft buried the portfolio under explanations. Visitors do not read: whoever lands has to reach the proof in one screen, without scrolling through a manifesto first.',
+      decisions: [
+        {
+          title: 'Portfolio above the fold, essays on a second page',
+          body: 'The client work moved directly below the hero and philosophy, FAQ, lab projects and the founder bio moved to a separate page. The home page lost a third of its height.',
+        },
+        {
+          title: 'An interactive cost calculator instead of a sales pitch',
+          body: 'Four sliders convert repeated messages, manual entries and reporting hours into hours and dollars lost per month, and preload that estimate into the WhatsApp message.',
+        },
+        {
+          title: 'A WhatsApp assistant rather than a contact form',
+          body: 'A simulated phone asks what the business needs, how it works today and where it is, replies with the approach for that case and hands the whole summary to WhatsApp.',
+        },
+        {
+          title: 'Two dictionaries, one DOM',
+          body: 'Every translatable node carries a data-i18n key; Spanish lives in the HTML and English in a dictionary, so the page switches language without reloading and without a build step.',
+        },
+      ],
+      outcome: [
+        'Live at coduv.vercel.app, deployed from GitHub on every push.',
+        'Home page cut from 12,500 to 8,900 pixels tall by moving long-form content to a second page.',
+        'Five client sites presented with screenshots and links to production.',
+        'Spanish and English, including the assistant, the simulator and the WhatsApp messages.',
+      ],
+      metrics: [
+        { value: '2', label: 'pages, no framework' },
+        { value: '5', label: 'client sites showcased' },
+        { value: '2', label: 'languages' },
+      ],
+    },
+    es: {
+      title: 'CODUV',
+      kind: 'Sitio del estudio \u00b7 marca propia',
+      tagline:
+        'El sitio del propio estudio, hecho como se le vende a sus clientes: portafolio primero, una sola acci\u00f3n y una calculadora que convierte las horas perdidas en una cifra.',
+      summary:
+        'Web p\u00fablica de CODUV, la marca bajo la que salen estos proyectos de clientes. Dos p\u00e1ginas, espa\u00f1ol e ingl\u00e9s, sin framework. La portada abre con los cinco sitios de clientes en vivo, y sigue con servicios ilustrados con diagramas animados, un proceso de cuatro pasos, una calculadora que estima cu\u00e1nto cuesta al mes el trabajo repetitivo, garant\u00edas por escrito y un asistente de WhatsApp que califica la consulta en tres preguntas.',
+      context:
+        'Un estudio nuevo no tiene rese\u00f1as ni marca conocida, as\u00ed que el sitio tiene que sustituir reputaci\u00f3n por evidencia: trabajos que se pueden abrir, un proceso con plazos y una persona con nombre y cara.',
+      problem:
+        'La primera versi\u00f3n enterraba el portafolio debajo de las explicaciones. La gente no lee: quien entra tiene que llegar a la prueba en una pantalla, sin atravesar antes un manifiesto.',
+      decisions: [
+        {
+          title: 'Portafolio arriba, los textos largos en otra p\u00e1gina',
+          body: 'Los trabajos de clientes subieron justo debajo del hero, y filosof\u00eda, preguntas frecuentes, sistemas propios y la biograf\u00eda del fundador se movieron a una p\u00e1gina aparte. La portada perdi\u00f3 un tercio de su alto.',
+        },
+        {
+          title: 'Una calculadora interactiva en vez de un discurso',
+          body: 'Cuatro controles convierten mensajes repetidos, registros a mano y horas de reportes en horas y d\u00f3lares perdidos al mes, y precargan esa estimaci\u00f3n en el mensaje de WhatsApp.',
+        },
+        {
+          title: 'Un asistente de WhatsApp en lugar de un formulario',
+          body: 'Un tel\u00e9fono simulado pregunta qu\u00e9 necesita el negocio, c\u00f3mo lo maneja hoy y d\u00f3nde est\u00e1, responde con el enfoque para ese caso y entrega el resumen completo a WhatsApp.',
+        },
+        {
+          title: 'Dos diccionarios, un solo DOM',
+          body: 'Cada nodo traducible lleva una clave data-i18n; el espa\u00f1ol vive en el HTML y el ingl\u00e9s en un diccionario, as\u00ed que la p\u00e1gina cambia de idioma sin recargar y sin paso de compilaci\u00f3n.',
+        },
+      ],
+      outcome: [
+        'En vivo en coduv.vercel.app, desplegado desde GitHub en cada push.',
+        'La portada baj\u00f3 de 12.500 a 8.900 p\u00edxeles de alto al mover el contenido largo a una segunda p\u00e1gina.',
+        'Cinco sitios de clientes presentados con captura y enlace a producci\u00f3n.',
+        'Espa\u00f1ol e ingl\u00e9s, incluidos el asistente, el simulador y los mensajes de WhatsApp.',
+      ],
+      metrics: [
+        { value: '2', label: 'p\u00e1ginas, sin framework' },
+        { value: '5', label: 'sitios de clientes mostrados' },
+        { value: '2', label: 'idiomas' },
+      ],
+    },
+  },
+
   /* ───────────────────────────── NOXIS ───────────────────────────── */
   {
     slug: 'noxis',
