@@ -28,7 +28,7 @@ export const ui = {
       'Each of these is a real, working system with the source public. Read the case study for the decisions behind it, not just the screenshot.',
     'work.client': 'Built for clients',
     'work.clientBody':
-      'Five Ecuadorian businesses asked for a site and got one that works. Small in scope, real in consequence: someone is running their bookings, quotes and class enrolments through these.',
+      'Five Ecuadorian businesses asked for a site and got one that works, and the sixth is the studio\u2019s own. Small in scope, real in consequence: someone is running their bookings, quotes and class enrolments through these.',
     'work.more': 'Also built',
     'work.readCase': 'Read case study',
     'work.viewCode': 'Source',
@@ -113,7 +113,7 @@ export const ui = {
       'Cada uno es un sistema real y funcional con el código público. Lee el case study por las decisiones detrás, no solo por la captura de pantalla.',
     'work.client': 'Hecho para clientes',
     'work.clientBody':
-      'Cinco negocios ecuatorianos pidieron una web y recibieron una que funciona. Alcance pequeño, consecuencia real: hay gente gestionando sus reservas, cotizaciones e inscripciones a clases por aquí.',
+      'Cinco negocios ecuatorianos pidieron una web y recibieron una que funciona, y la sexta es la del propio estudio. Alcance pequeño, consecuencia real: hay gente gestionando sus reservas, cotizaciones e inscripciones a clases por aquí.',
     'work.more': 'También construí',
     'work.readCase': 'Leer case study',
     'work.viewCode': 'Código',
