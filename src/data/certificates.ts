@@ -47,6 +47,25 @@ export const certificates: Certificate[] = [
     image: '/certs/prompters-ecuador.jpg',
   },
   {
+    slug: 'cisco-packet-tracer',
+    title: {
+      en: 'Getting Started with Cisco Packet Tracer',
+      es: 'Getting Started with Cisco Packet Tracer',
+    },
+    issuer: 'Cisco Networking Academy',
+    date: {
+      en: '26 September 2026',
+      es: '26 de septiembre de 2026',
+    },
+    detail: {
+      en: 'Network simulation: building and configuring topologies',
+      es: 'Simulación de redes: armado y configuración de topologías',
+    },
+    credentialId: '2ba64b57-f841-4fed-a644-e484886e29e7',
+    file: '/certs/cisco-packet-tracer.pdf',
+    image: '/certs/cisco-packet-tracer.jpg',
+  },
+  {
     slug: 'santander-python',
     title: {
       en: 'Python',
