@@ -7,6 +7,7 @@ export const ui = {
     'nav.work': 'Work',
     'nav.stack': 'Stack',
     'nav.about': 'About',
+    'nav.certs': 'Certificates',
     'nav.contact': 'Contact',
     'nav.resume': 'Résumé',
 
@@ -73,6 +74,13 @@ export const ui = {
     'about.p5':
       'I keep building while I finish my degree, and I learn the next thing by shipping something with it. If you are hiring for engineering work that touches systems, data or automation, I would like to talk.',
 
+    'certs.eyebrow': 'Credentials',
+    'certs.title': 'Training with a paper trail',
+    'certs.body':
+      'Short programmes, finished and verifiable. Each card opens the original certificate.',
+    'certs.view': 'View certificate',
+    'certs.credential': 'ID',
+
     'contact.eyebrow': 'Contact',
     'contact.title': 'Let us talk',
     'contact.body':
@@ -92,6 +100,7 @@ export const ui = {
     'nav.work': 'Proyectos',
     'nav.stack': 'Stack',
     'nav.about': 'Sobre mí',
+    'nav.certs': 'Certificaciones',
     'nav.contact': 'Contacto',
     'nav.resume': 'CV',
 
@@ -157,6 +166,13 @@ export const ui = {
       'Trabajo rápido porque uso herramientas de IA en serio, como multiplicador de ingeniería y con revisión, no como sustituto de entender el sistema. Cada decisión de arquitectura de esta página es una que puedo defender en una entrevista de pizarrón, porque la tomé yo.',
     'about.p5':
       'Sigo construyendo mientras termino la carrera, y aprendo lo siguiente entregando algo hecho con eso. Si contratas para trabajo de ingeniería que toque sistemas, datos o automatización, me gustaría hablar.',
+
+    'certs.eyebrow': 'Credenciales',
+    'certs.title': 'Formación con respaldo',
+    'certs.body':
+      'Programas cortos, terminados y verificables. Cada tarjeta abre el certificado original.',
+    'certs.view': 'Ver certificado',
+    'certs.credential': 'N.º',
 
     'contact.eyebrow': 'Contacto',
     'contact.title': 'Hablemos',

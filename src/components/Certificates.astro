@@ -1,0 +1,75 @@
+---
+import { certificates } from '../data/certificates';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import Section from './Section.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Section
+  id="certs"
+  num="04"
+  eyebrow={t('certs.eyebrow')}
+  title={t('certs.title')}
+  body={t('certs.body')}
+>
+  <ul class="grid gap-6 sm:grid-cols-2">
+    {
+      certificates.map((cert) => (
+        <li>
+          <article class="card group flex h-full flex-col overflow-hidden">
+            <a
+              href={cert.file}
+              target="_blank"
+              rel="noopener"
+              class="overflow-hidden border-b border-line bg-surface"
+              aria-label={`${t('certs.view')}: ${cert.title[lang]}`}
+            >
+              <img
+                src={cert.image}
+                alt={`${cert.title[lang]} — ${cert.issuer}`}
+                loading="lazy"
+                decoding="async"
+                class="aspect-[16/10] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+              />
+            </a>
+
+            <div class="flex flex-1 flex-col p-6">
+              <p class="font-mono text-xs text-ink-dim">{cert.issuer}</p>
+
+              <h3 class="display-sm mt-3 text-xl">
+                <a href={cert.file} target="_blank" rel="noopener">
+                  {cert.title[lang]}
+                </a>
+              </h3>
+
+              {cert.issuerNote && (
+                <p class="mt-2 text-xs leading-snug text-ink-dim">{cert.issuerNote[lang]}</p>
+              )}
+
+              {cert.detail && (
+                <p class="mt-4 flex-1 text-sm leading-relaxed text-ink-muted">
+                  {cert.detail[lang]}
+                </p>
+              )}
+
+              <ul class="mt-5 flex flex-wrap gap-1.5">
+                {cert.date && <li class="tag">{cert.date[lang]}</li>}
+                {cert.credentialId && (
+                  <li class="tag tag-accent">
+                    {t('certs.credential')} {cert.credentialId}
+                  </li>
+                )}
+              </ul>
+
+              <p class="mt-5 text-sm font-medium text-accent transition-transform group-hover:translate-x-0.5">
+                {t('certs.view')} <span aria-hidden="true">→</span>
+              </p>
+            </div>
+          </article>
+        </li>
+      ))
+    }
+  </ul>
+</Section>
